@@ -1,101 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HardRPeppers</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HardRPeppers</title>
 
-  <style>
-    body{
-      margin:0;
-      background:#0a0a0a;
-      color:white;
-      font-family:Arial,Helvetica,sans-serif;
-      text-align:center;
-    }
+<style>
 
-    header{
-      padding:60px 20px;
-      background:#111;
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-    h1{
-      color:#7CFC00;
-      font-size:3rem;
-      margin-bottom:10px;
-    }
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#090909;
+color:white;
+line-height:1.7;
+}
 
-    h2{
-      color:#7CFC00;
-    }
+header{
+background:linear-gradient(135deg,#111,#1b1b1b);
+padding:25px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:2px solid #59ff00;
+}
 
-    p{
-      max-width:800px;
-      margin:auto;
-      line-height:1.6;
-      padding:0 20px;
-    }
+.logo{
+font-size:34px;
+font-weight:bold;
+color:#7CFC00;
+}
 
-    .button{
-      display:inline-block;
-      margin-top:30px;
-      padding:15px 35px;
-      background:#7CFC00;
-      color:black;
-      text-decoration:none;
-      font-weight:bold;
-      border-radius:8px;
-    }
+nav a{
+color:white;
+text-decoration:none;
+margin-left:25px;
+font-weight:bold;
+transition:.3s;
+}
 
-    section{
-      padding:60px 20px;
-    }
+nav a:hover{
+color:#7CFC00;
+}
 
-    footer{
-      background:#111;
-      padding:30px;
-      color:#999;
-      font-size:.9rem;
-    }
-  </style>
+.hero{
+padding:120px 20px;
+text-align:center;
+background:
+linear-gradient(rgba(0,0,0,.70),rgba(0,0,0,.85));
+}
+
+.hero h1{
+font-size:60px;
+color:#7CFC00;
+margin-bottom:15px;
+}
+
+.hero p{
+max-width:800px;
+margin:auto;
+font-size:20px;
+color:#ddd;
+}
+
+.button{
+display:inline-block;
+margin-top:35px;
+padding:16px 40px;
+background:#7CFC00;
+color:black;
+font-weight:bold;
+text-decoration:none;
+border-radius:40px;
+}
+
+section{
+max-width:1100px;
+margin:auto;
+padding:80px 25px;
+}
+
+h2{
+color:#7CFC00;
+margin-bottom:20px;
+font-size:36px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+margin-top:40px;
+}
+
+.card{
+background:#151515;
+padding:30px;
+border-radius:15px;
+border:1px solid #333;
+}
+
+.card h3{
+color:#7CFC00;
+margin-bottom:15px;
+}
+
+footer{
+background:#111;
+padding:40px;
+text-align:center;
+border-top:2px solid #59ff00;
+color:#bbb;
+}
+
+@media(max-width:700px){
+
+header{
+flex-direction:column;
+}
+
+nav{
+margin-top:15px;
+}
+
+.hero h1{
+font-size:42px;
+}
+
+}
+
+</style>
+
 </head>
 
 <body>
 
 <header>
-  <h1>HardRPeppers</h1>
-  <p>Welcome to HardRPeppers. We provide information about our laboratory quality standards, documentation, and Certificates of Analysis for research products.</p>
 
-  <a class="button" href="coa.html">View COA Library</a>
+<div class="logo">
+HardRPeppers
+</div>
+
+<nav>
+<a href="#">Home</a>
+<a href="#">About</a>
+<a href="#">Documentation</a>
+<a href="#">Contact</a>
+</nav>
+
 </header>
+
+<section class="hero">
+
+<h1>Quality. Documentation. Transparency.</h1>
+
+<p>
+Welcome to HardRPeppers. This website provides general information about our company, quality standards, and supporting documentation. Visitors can learn more about our commitment to transparency and laboratory documentation.
+</p>
+
+<a class="button" href="#">
+Learn More
+</a>
+
+</section>
 
 <section>
 
 <h2>Our Commitment</h2>
 
+<div class="cards">
+
+<div class="card">
+<h3>Quality Standards</h3>
 <p>
-We are committed to providing clear documentation, transparency, and laboratory quality information for our products. This website serves as an informational resource for visitors seeking product documentation and company information.
+We strive to maintain consistent documentation and quality practices to support informed research.
 </p>
+</div>
 
-</section>
-
-<section>
-
-<h2>Research Information</h2>
-
+<div class="card">
+<h3>Documentation</h3>
 <p>
-Information on this website is provided for educational and informational purposes. Visitors should review available documentation and product-specific information before making any research decisions.
+Supporting documentation and reference materials are made available to promote transparency.
 </p>
+</div>
+
+<div class="card">
+<h3>Professional Service</h3>
+<p>
+We are committed to clear communication and providing accurate information about our company and documentation.
+</p>
+</div>
+
+</div>
 
 </section>
 
 <footer>
 
-© 2026 HardRPeppers<br><br>
+<h3 style="color:#7CFC00;">HardRPeppers</h3>
 
-Contact:<br>
+<p>
+Email: hardrpeppers@gmail.com
+</p>
 
-hardrpeppers@gmail.com
+<br>
+
+<p>
+© 2026 HardRPeppers. All Rights Reserved.
+</p>
 
 </footer>
 
