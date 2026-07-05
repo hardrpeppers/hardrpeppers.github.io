@@ -10,26 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const gateChecks = Array.from(document.querySelectorAll('.entry-gate__checkbox'));
   const siteShell = document.getElementById('site-shell');
 
-  const hasValidGateAcceptance = () => {
-    try {
-      const raw = localStorage.getItem(GATE_KEY);
-      if (!raw) {
-        return false;
-      }
-      const parsed = JSON.parse(raw);
-      return Boolean(
-        parsed
-        && typeof parsed === 'object'
-        && Number.isFinite(parsed.acceptedAt)
-        && Number.isFinite(parsed.expiresAt)
-        && parsed.expiresAt > parsed.acceptedAt
-        && Date.now() < parsed.expiresAt
-      );
-    } catch (_) {
-      return false;
-    }
-  };
-
   const updateGateEnterState = () => {
     if (!gateEnter) {
       return;
@@ -51,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  if (gate && !hasValidGateAcceptance()) {
+  if (gate) {
     document.body.classList.add('entry-gate-active');
     if (siteShell) {
       siteShell.setAttribute('inert', '');
@@ -81,8 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
         closeGate();
       });
     }
-  } else if (gate && hasValidGateAcceptance()) {
-    closeGate();
   }
 
   const hero = document.querySelector('.hero__content');
