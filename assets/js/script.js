@@ -2,40 +2,132 @@
 document.addEventListener('DOMContentLoaded', () => {
   document.documentElement.classList.add('js-enabled');
 
-  const GATE_KEY = 'hrp-entry-gate-v1';
-  const GATE_DURATION_MS = 30 * 24 * 60 * 60 * 1000;
-  const gate = document.getElementById('entry-gate');
-  const gateForm = document.getElementById('entry-gate-form');
-  const gateEnter = document.getElementById('entry-gate-enter');
-  const gateChecks = Array.from(document.querySelectorAll('.entry-gate__checkbox'));
+  const GATE_KEY = 'hrp-entry-gate-v2';
+  const GATE_DURATION_MS = 24 * 60 * 60 * 1000;
   const siteShell = document.getElementById('site-shell');
 
-  const updateGateEnterState = () => {
-    if (!gateEnter) {
-      return;
+  const hasValidGateAcceptance = () => {
+    try {
+      const raw = localStorage.getItem(GATE_KEY);
+      if (!raw) {
+        return false;
+      }
+      const parsed = JSON.parse(raw);
+      return Boolean(parsed && typeof parsed.expiresAt === 'number' && Date.now() < parsed.expiresAt);
+    } catch (_) {
+      return false;
     }
-    const allChecked = gateChecks.length > 0 && gateChecks.every((check) => check.checked);
-    gateEnter.disabled = !allChecked;
   };
 
-  const closeGate = () => {
-    if (!gate) {
+  const ensureGate = () => {
+    let gateNode = document.getElementById('entry-gate');
+    if (gateNode) {
+      return gateNode;
+    }
+
+    gateNode = document.createElement('section');
+    gateNode.className = 'entry-gate';
+    gateNode.id = 'entry-gate';
+    gateNode.setAttribute('aria-labelledby', 'entry-gate-title');
+    gateNode.innerHTML = `
+      <div class="entry-gate__backdrop" aria-hidden="true"></div>
+      <div class="entry-gate__card" role="dialog" aria-modal="true" aria-describedby="entry-gate-description">
+        <img src="assets/images/logo2.PNG" class="entry-gate__logo" alt="HardRPeppers logo">
+        <h1 class="entry-gate__title" id="entry-gate-title">Research. Transparency.</h1>
+        <p class="entry-gate__welcome">Welcome to HardRPeppers.</p>
+        <p class="entry-gate__description" id="entry-gate-description">This website contains research materials and supporting documentation intended for laboratory and analytical research purposes.</p>
+        <form class="entry-gate__form" id="entry-gate-form">
+          <div class="entry-gate__checks">
+            <label class="entry-gate__check" for="gate-check-1">
+              <input type="checkbox" id="gate-check-1" class="entry-gate__checkbox" required>
+              <span>I am at least 21 years of age.</span>
+            </label>
+            <label class="entry-gate__check" for="gate-check-2">
+              <input type="checkbox" id="gate-check-2" class="entry-gate__checkbox" required>
+              <span>I understand these materials are intended for laboratory and analytical research purposes only.</span>
+            </label>
+            <label class="entry-gate__check" for="gate-check-3">
+              <input type="checkbox" id="gate-check-3" class="entry-gate__checkbox" required>
+              <span>I understand these products are not intended for human consumption.</span>
+            </label>
+            <label class="entry-gate__check" for="gate-check-4">
+              <input type="checkbox" id="gate-check-4" class="entry-gate__checkbox" required>
+              <span>I understand it is my responsibility to comply with all applicable laws and regulations in my jurisdiction.</span>
+            </label>
+          </div>
+          <div class="entry-gate__actions">
+            <button type="submit" class="button button--primary entry-gate__enter" id="entry-gate-enter" disabled>Enter Research Portal</button>
+            <a href="https://www.google.com" class="button button--secondary entry-gate__leave">Leave Website</a>
+          </div>
+        </form>
+      </div>
+    `;
+
+    document.body.prepend(gateNode);
+    return gateNode;
+  };
+
+  const setPageInert = (active) => {
+    if (siteShell) {
+      if (active) {
+        siteShell.setAttribute('inert', '');
+      } else {
+        siteShell.removeAttribute('inert');
+      }
       return;
     }
 
-    gate.classList.add('is-hidden');
-    gate.setAttribute('aria-hidden', 'true');
+    Array.from(document.body.children).forEach((child) => {
+      if (child.id === 'entry-gate') {
+        return;
+      }
+
+      if (active) {
+        child.setAttribute('inert', '');
+      } else {
+        child.removeAttribute('inert');
+      }
+    });
+  };
+
+  const closeGate = (gateNode) => {
+    if (!gateNode) {
+      return;
+    }
+
+    gateNode.classList.add('is-hidden');
+    gateNode.setAttribute('aria-hidden', 'true');
+    document.documentElement.classList.remove('entry-gate-active');
     document.body.classList.remove('entry-gate-active');
-    if (siteShell) {
-      siteShell.removeAttribute('inert');
-    }
+    setPageInert(false);
   };
 
-  if (gate) {
-    document.body.classList.add('entry-gate-active');
-    if (siteShell) {
-      siteShell.setAttribute('inert', '');
+  const initializeGate = () => {
+    const shouldRequireGate = document.documentElement.classList.contains('entry-gate-active') || !hasValidGateAcceptance();
+    const gateNode = ensureGate();
+    const gateForm = document.getElementById('entry-gate-form');
+    const gateEnter = document.getElementById('entry-gate-enter');
+    const gateChecks = Array.from(document.querySelectorAll('.entry-gate__checkbox'));
+
+    const updateGateEnterState = () => {
+      if (!gateEnter) {
+        return;
+      }
+      const allChecked = gateChecks.length > 0 && gateChecks.every((check) => check.checked);
+      gateEnter.disabled = !allChecked;
+    };
+
+    if (!shouldRequireGate) {
+      closeGate(gateNode);
+      document.documentElement.classList.remove('entry-gate-pending');
+      return;
     }
+
+    gateNode.classList.remove('is-hidden');
+    gateNode.setAttribute('aria-hidden', 'false');
+    document.documentElement.classList.add('entry-gate-active');
+    document.body.classList.add('entry-gate-active');
+    setPageInert(true);
 
     updateGateEnterState();
     gateChecks.forEach((check) => check.addEventListener('change', updateGateEnterState));
@@ -58,10 +150,14 @@ document.addEventListener('DOMContentLoaded', () => {
           // Continue even if storage is unavailable.
         }
 
-        closeGate();
-      });
+        closeGate(gateNode);
+      }, { once: true });
     }
-  }
+
+    document.documentElement.classList.remove('entry-gate-pending');
+  };
+
+  initializeGate();
 
   const hero = document.querySelector('.hero__content');
   const glow = document.querySelector('.background-glow');

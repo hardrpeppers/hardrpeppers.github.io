@@ -23,6 +23,10 @@ html {
   overflow-x: hidden;
 }
 
+html.entry-gate-pending body {
+  opacity: 0;
+}
+
 body {
   min-height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
@@ -40,9 +44,14 @@ img {
   height: auto;
 }
 
+html.entry-gate-active,
 body.entry-gate-active {
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
+  height: 100%;
+}
+
+body.entry-gate-active {
+  touch-action: none;
 }
 
 .site-shell {
@@ -67,6 +76,11 @@ body.entry-gate-active {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   transition: opacity 0.45s ease, visibility 0.45s ease;
+}
+
+html.entry-gate-pending .entry-gate {
+  opacity: 1;
+  visibility: visible;
 }
 
 .entry-gate.is-hidden {

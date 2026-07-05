@@ -4,7 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HardRPeppers | Products</title>
-  <link rel="stylesheet" href="assets/css/style.css?v=7">
+  <link rel="stylesheet" href="assets/css/style.css?v=8">
+  <script>
+    (function () {
+      var key = 'hrp-entry-gate-v2';
+      var shouldGate = true;
+      try {
+        var raw = localStorage.getItem(key);
+        if (raw) {
+          var parsed = JSON.parse(raw);
+          if (parsed && typeof parsed.expiresAt === 'number' && Date.now() < parsed.expiresAt) {
+            shouldGate = false;
+          }
+        }
+      } catch (e) {
+        shouldGate = true;
+      }
+      if (shouldGate) {
+        document.documentElement.classList.add('entry-gate-pending');
+        document.documentElement.classList.add('entry-gate-active');
+      }
+    })();
+  </script>
 </head>
 <body>
   <div class="background-glow" aria-hidden="true"></div>
@@ -54,6 +75,6 @@
     <section class="product-catalog product-catalog--store reveal" id="product-catalog" aria-label="Products catalog"></section>
   </main>
 
-  <script src="assets/js/script.js?v=7"></script>
+  <script src="assets/js/script.js?v=8"></script>
 </body>
 </html>
