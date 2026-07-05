@@ -424,6 +424,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <a href="index.html#home">Home</a>
           <a href="products.html">Products</a>
           <a href="coas.html">COAs</a>
+          <a href="faq.html">FAQ</a>
           <a href="contact.html">Contact</a>
         </div>
       </div>

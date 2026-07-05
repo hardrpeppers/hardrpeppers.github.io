@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HardRPeppers | FAQ</title>
+  <link rel="stylesheet" href="assets/css/style.css?v=13">
+  <script>
+    (function () {
+      var key = 'hrp-entry-gate-v2';
+      var shouldGate = true;
+      try {
+        var raw = localStorage.getItem(key);
+        if (raw) {
+          var parsed = JSON.parse(raw);
+          if (parsed && typeof parsed.expiresAt === 'number' && Date.now() < parsed.expiresAt) {
+            shouldGate = false;
+          }
+        }
+      } catch (e) {
+        shouldGate = true;
+      }
+      if (shouldGate) {
+        document.documentElement.classList.add('entry-gate-pending');
+        document.documentElement.classList.add('entry-gate-active');
+      }
+    })();
+  </script>
+</head>
+<body class="faq-page">
+  <div class="background-glow" aria-hidden="true"></div>
+
+  <nav class="site-nav" aria-label="Primary navigation">
+    <a class="site-nav__brand" href="index.html" aria-label="HardRPeppers home">
+      <img src="assets/images/logo2.PNG" class="site-nav__brand-logo" alt="HardRPeppers logo">
+    </a>
+    <button class="site-nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav-links">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="site-nav__links" id="primary-nav-links">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#research">Research</a>
+      <a href="products.html">Products</a>
+      <a href="coas.html">COAs</a>
+      <a href="index.html#about">About</a>
+      <a href="faq.html" class="is-active">FAQ</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <main class="page-shell">
+    <section class="coas-panel reveal">
+      <div>
+        <p class="eyebrow">Support and transparency</p>
+        <h1>Frequently Asked Questions</h1>
+        <p class="page-hero__text">
+          Clear answers about HardRPeppers products, ordering, shipping, and research documentation.
+        </p>
+        <div class="coas-panel__actions">
+          <a href="products.html" class="button button--primary button--xl">Browse Products</a>
+          <a href="coas.html" class="button button--secondary">View COAs</a>
+        </div>
+      </div>
+
+      <div class="coas-preview">
+        <article class="coas-preview__card">
+          <span>Need help?</span>
+          <strong>Text to Order Support</strong>
+          <p>Use product buttons to start your order message instantly and include your shipping state.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="card reveal" aria-label="Frequently asked questions">
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary>What is HardRPeppers?</summary>
+          <p>HardRPeppers is a research-focused storefront that presents products with clear documentation, transparent communication, and COA access for reference before ordering.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What does "Research Use Only" mean?</summary>
+          <p>Research Use Only means products are intended strictly for laboratory and analytical research purposes. They are not intended for human consumption.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Why are COAs provided?</summary>
+          <p>COAs are provided to help verify batch documentation and maintain transparency, so customers can review product testing records before placing an order.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How do I order?</summary>
+          <p>Open the Products page and use Text to Order to launch your messaging app with prefilled product details, or use Copy Order Details and paste the message into your preferred app.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How does shipping work?</summary>
+          <p>Shipping details are confirmed directly through text after your order message is received. You will provide your name and shipping state during order confirmation.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How do I view a product COA?</summary>
+          <p>Use the View COA button on product cards or visit the COAs page to review available documentation and downloads.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How long does it take to receive a response after texting?</summary>
+          <p>Response times can vary based on message volume, but most order inquiries are answered as quickly as possible in the order they are received.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/script.js?v=13"></script>
+</body>
+</html>

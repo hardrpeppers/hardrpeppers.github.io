@@ -4572,6 +4572,52 @@ h1 {
   transform: translateX(-50%) translateY(0);
 }
 
+.faq-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.faq-item {
+  border: 1px solid rgba(30, 107, 255, 0.26);
+  border-radius: 1rem;
+  background: linear-gradient(145deg, rgba(11, 14, 20, 0.92), rgba(12, 16, 24, 0.86));
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.26);
+  overflow: hidden;
+}
+
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1rem 1.15rem;
+  font-weight: 700;
+  color: #dce8ff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9rem;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  font-size: 1.15rem;
+  line-height: 1;
+  color: #7eadff;
+  transition: transform 0.2s ease;
+}
+
+.faq-item[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.faq-item p {
+  padding: 0 1.15rem 1rem;
+  color: #c9d7ef;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .copy-order-button:hover {
     transform: translateY(-2px);
