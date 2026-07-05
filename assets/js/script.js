@@ -69,9 +69,95 @@ document.addEventListener('DOMContentLoaded', () => {
   const navToggle = nav ? nav.querySelector('.site-nav__toggle') : null;
   const navLinks = Array.from(document.querySelectorAll('.site-nav__links a'));
   const counters = Array.from(document.querySelectorAll('.stats-card__value'));
-  const searchInput = document.getElementById('product-search');
-  const filterButtons = Array.from(document.querySelectorAll('.catalog-filter'));
-  const catalog = document.getElementById('product-catalog');
+  const productCatalog = document.getElementById('product-catalog');
+  const coaGrid = document.getElementById('coa-grid');
+  const coaModal = document.getElementById('pdf-modal');
+  const coaModalTitle = document.getElementById('modal-title');
+  const coaModalFrame = document.getElementById('modal-frame');
+  const siteFooter = document.querySelector('footer.footer');
+
+  const products = [
+    {
+      name: 'Research Compound A',
+      price: '$38.00',
+      category: 'Research Materials',
+      image: 'assets/images/hero-products.jpg',
+      description: 'Structured reference material with robust documentation for professional review and batch transparency.',
+      detailsUrl: 'product-a.html',
+      featured: true,
+    },
+    {
+      name: 'Research Compound B',
+      price: '$42.00',
+      category: 'Research Materials',
+      image: 'assets/images/IMG_3098.JPG',
+      description: 'Premium documentation package created for technical review, reference workflows, and academic transparency.',
+      detailsUrl: 'product-b.html',
+    },
+    {
+      name: 'Research Compound C',
+      price: '$46.00',
+      category: 'Research Materials',
+      image: 'assets/images/IMG_3099.JPG',
+      description: 'Professionally presented research material designed for confidence, review, and batch-specific support.',
+      detailsUrl: 'product-c.html',
+    },
+    {
+      name: 'Reference Standard',
+      price: '$34.00',
+      category: 'Support Products',
+      image: 'assets/images/IMG_3108.JPG',
+      description: 'Reference-grade material created for controlled validation workflows and technical comparison.',
+      detailsUrl: 'product-d.html',
+    },
+    {
+      name: 'Documentation Kit',
+      price: '$28.00',
+      category: 'Support Products',
+      image: 'assets/images/IMG_3109.JPG',
+      description: 'Professional research kit with supporting technical reference and traceability assets for comprehensive review.',
+      detailsUrl: 'product-e.html',
+    },
+    {
+      name: 'Quality Panel',
+      price: '$30.00',
+      category: 'Starter Kits',
+      image: 'assets/images/IMG_3127.jpeg',
+      description: 'Comprehensive quality presentation package designed for lab teams and documentation review scenarios.',
+      detailsUrl: 'product-f.html',
+    },
+  ];
+
+  const coaRecords = [
+    {
+      title: 'Research Compound A',
+      batch: 'B1042',
+      date: '2026-06-10',
+      status: 'Verified',
+      pdfUrl: 'assets/pdfs/coa-sample.pdf',
+    },
+    {
+      title: 'Research Compound B',
+      batch: 'B1048',
+      date: '2026-05-22',
+      status: 'Verified',
+      pdfUrl: 'assets/pdfs/coa-sample.pdf',
+    },
+    {
+      title: 'Research Compound C',
+      batch: 'B1061',
+      date: '2026-04-17',
+      status: 'Verified',
+      pdfUrl: 'assets/pdfs/coa-sample.pdf',
+    },
+    {
+      title: 'Reference Standard',
+      batch: 'B1084',
+      date: '2026-03-11',
+      status: 'Verified',
+      pdfUrl: 'assets/pdfs/coa-sample.pdf',
+    },
+  ];
 
   const closeNavMenu = () => {
     if (!nav || !navToggle) {
@@ -79,6 +165,127 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     nav.classList.remove('is-open');
     navToggle.setAttribute('aria-expanded', 'false');
+  };
+
+  const updateNavShrinkState = () => {
+    if (!nav) {
+      return;
+    }
+
+    nav.classList.toggle('is-scrolled', window.scrollY > 12);
+  };
+
+  const renderFooter = () => {
+    if (siteFooter) {
+      return;
+    }
+
+    const footer = document.createElement('footer');
+    footer.classList.add('footer', 'site-footer', 'reveal');
+    document.body.appendChild(footer);
+
+    const currentYear = new Date().getFullYear();
+    footer.innerHTML = `
+      <div class="footer__panel">
+        <div class="footer__brand">
+          <img src="assets/images/0F5CA4CC-1D91-4969-94A7-D25F084F75B5.png" class="footer__logo" alt="HardRPeppers logo">
+          <div>
+            <p class="footer__eyebrow">HardRPeppers</p>
+            <p class="footer__disclaimer">Research Use Only. For laboratory and analytical research purposes only.</p>
+          </div>
+        </div>
+
+        <div class="footer__links footer__links--compact" aria-label="Quick navigation">
+          <a href="index.html#home">Home</a>
+          <a href="products.html">Products</a>
+          <a href="coas.html">COAs</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>© ${currentYear} HardRPeppers. All rights reserved.</p>
+        <a href="contact.html" class="back-to-top">Text to Order</a>
+      </div>
+    `;
+  };
+
+  const renderProductCatalog = () => {
+    if (!productCatalog) {
+      return;
+    }
+
+    productCatalog.innerHTML = '';
+
+    products.forEach((product) => {
+      const card = document.createElement('article');
+      card.className = 'product-card product-card--catalog product-card--store reveal';
+      card.innerHTML = `
+        <div class="product-card__image product-card__image--catalog">
+          ${product.featured ? '<span class="product-card__featured">Featured Product</span>' : ''}
+          <span class="product-card__ribbon">COA Available</span>
+          <img src="${product.image}" alt="${product.name} product image" loading="lazy" decoding="async">
+        </div>
+        <div class="product-card__body">
+          <h3>${product.name}</h3>
+          <p>${product.description}</p>
+          <p class="product-card__price">${product.price}</p>
+          <div class="product-card__actions">
+            <a href="${product.detailsUrl}" class="button button--primary product-card__button">View Details</a>
+          </div>
+        </div>
+      `;
+
+      productCatalog.appendChild(card);
+      revealObserver.observe(card);
+    });
+  };
+
+  const openCoaPreview = (title, pdfUrl) => {
+    if (!coaModal || !coaModalTitle || !coaModalFrame) {
+      return;
+    }
+
+    coaModalTitle.textContent = title;
+    coaModalFrame.src = pdfUrl;
+    coaModal.classList.add('is-open');
+    coaModal.setAttribute('aria-hidden', 'false');
+  };
+
+  const closeCoaPreview = () => {
+    if (!coaModal || !coaModalTitle || !coaModalFrame) {
+      return;
+    }
+
+    coaModal.classList.remove('is-open');
+    coaModal.setAttribute('aria-hidden', 'true');
+    coaModalFrame.src = '';
+  };
+
+  const renderCoaCards = () => {
+    if (!coaGrid) {
+      return;
+    }
+
+    coaGrid.innerHTML = '';
+
+    coaRecords.forEach((record) => {
+      const card = document.createElement('article');
+      card.className = 'coa-card reveal';
+      card.innerHTML = `
+        <div class="coa-card__badge">${record.status}</div>
+        <h3>${record.title}</h3>
+        <p class="coa-card__meta">Batch ${record.batch} · ${record.date}</p>
+        <p>Clean batch documentation with quick preview and direct PDF download support.</p>
+        <div class="coa-card__actions">
+          <button type="button" class="table-action" data-coa-preview data-coa-title="${record.title} — Batch ${record.batch}" data-coa-pdf="${record.pdfUrl}">Preview</button>
+          <a class="table-action table-action--download coa-download" href="${record.pdfUrl}" download>Download PDF</a>
+        </div>
+      `;
+
+      coaGrid.appendChild(card);
+      revealObserver.observe(card);
+    });
   };
 
   if (nav && navToggle) {
@@ -99,6 +306,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  updateNavShrinkState();
+  window.addEventListener('scroll', updateNavShrinkState, { passive: true });
+
+  renderFooter();
 
   const updatePointerGlow = (event) => {
     if (!hero || !glow) {
@@ -184,155 +396,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.reveal').forEach((item) => revealObserver.observe(item));
 
-  if (catalog) {
-    // Add Product template: duplicate one object and update its values.
-    const products = [
-      {
-        name: 'R3ta 10mg',
-        price: '$38',
-        category: 'Research Materials',
-        image: 'assets/images/IMG_3099.JPG',
-        coa: '/coas/r3ta.pdf',
-        description: 'Precision-prepared research material designed for laboratory analysis.',
-        featured: true,
-        orderMessage: "Hello! I'd like to order R3ta 10mg.",
-      },
-      {
-        name: 'Antifreeze',
-        price: '$16',
-        category: 'Support Products',
-        image: 'assets/images/IMG_3107.jpeg',
-        coa: '/coas/antifreeze.pdf',
-        description: 'Laboratory support fluid intended for controlled research setups and technical workflows.',
-        featured: false,
-        orderMessage: "Hello! I'd like to order Antifreeze.",
-      },
-      {
-        name: 'Complete Starter Kit',
-        price: '$65',
-        category: 'Starter Kits',
-        image: 'assets/images/IMG_3127.jpeg',
-        coa: '/coas/starter-kit.pdf',
-        description: 'A complete starter package with professional presentation and documentation-ready organization.',
-        featured: false,
-        orderMessage: "Hello! I'd like to order the Complete Starter Kit.",
-      },
-    ];
+  renderProductCatalog();
+  renderCoaCards();
 
-    const smsPhone = '+15551234567';
-    const slugify = (value) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-    const categoryToFilter = (category) => slugify(category);
-    const toCurrency = (price) => {
-      if (!price.startsWith('$')) {
-        return price;
-      }
-
-      const numeric = Number(price.replace('$', ''));
-      if (Number.isNaN(numeric)) {
-        return price;
-      }
-
-      return `$${numeric.toFixed(2)}`;
-    };
-
-    const createProductCard = (product) => {
-      const card = document.createElement('article');
-      card.className = 'product-card product-card--catalog product-card--store reveal';
-      card.dataset.category = categoryToFilter(product.category);
-      card.dataset.productName = product.name;
-      card.dataset.productKeywords = `${product.name} ${product.category} ${product.description}`;
-
-      const fallback = `coa-coming-soon.html?product=${encodeURIComponent(product.name)}`;
-      const smsBody = encodeURIComponent(product.orderMessage);
-
-      card.innerHTML = `
-        <div class="product-card__image product-card__image--catalog">
-          ${product.featured ? '<span class="product-card__featured">Featured Product</span>' : ''}
-          <span class="product-card__ribbon">Research Use Only</span>
-          <img src="${product.image}" alt="${product.name} product image" loading="lazy">
-        </div>
-        <div class="product-card__body">
-          <h3>${product.name}</h3>
-          <p>${product.description}</p>
-          <p class="product-card__price">${toCurrency(product.price)}</p>
-          <p class="product-card__disclaimer">For laboratory and analytical research use only. Not for human consumption.</p>
-          <div class="product-card__actions">
-            <a href="${product.coa}" class="product-card__button product-card__button--coa" data-coa-fallback="${fallback}">View COA</a>
-            <a href="sms:${smsPhone}?body=${smsBody}" class="product-card__button product-card__button--order">Order Now</a>
-          </div>
-        </div>
-      `;
-
-      return card;
-    };
-
-    products.forEach((product) => {
-      const card = createProductCard(product);
-      catalog.appendChild(card);
-      revealObserver.observe(card);
-    });
-
-    const productCards = Array.from(catalog.querySelectorAll('.product-card--store'));
-    let activeFilter = 'all';
-
-    const applyProductFilters = () => {
-      const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
-
-      productCards.forEach((card) => {
-        const category = (card.dataset.category || '').toLowerCase();
-        const productName = (card.dataset.productName || '').toLowerCase();
-        const keywordText = (card.dataset.productKeywords || '').toLowerCase();
-        const matchesFilter = activeFilter === 'all' || category === activeFilter;
-        const matchesSearch = !query || productName.includes(query) || keywordText.includes(query);
-        card.classList.toggle('is-filtered-out', !(matchesFilter && matchesSearch));
-      });
-    };
-
-    if (searchInput) {
-      searchInput.addEventListener('input', applyProductFilters);
-    }
-
-    filterButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        activeFilter = button.dataset.filter || 'all';
-        filterButtons.forEach((item) => item.classList.toggle('is-active', item === button));
-        applyProductFilters();
-      });
-    });
-
-    applyProductFilters();
-  }
-
-  document.addEventListener('click', async (event) => {
+  document.addEventListener('click', (event) => {
     const target = event.target;
     if (!(target instanceof Element)) {
       return;
     }
 
-    const button = target.closest('.product-card__button--coa');
-    if (!button) {
+    const previewTrigger = target.closest('[data-coa-preview]');
+    if (previewTrigger) {
+      event.preventDefault();
+      openCoaPreview(previewTrigger.getAttribute('data-coa-title') || 'Certificate', previewTrigger.getAttribute('data-coa-pdf') || '');
       return;
     }
 
-    const coaUrl = button.getAttribute('href');
-    const fallback = button.getAttribute('data-coa-fallback') || 'coa-coming-soon.html';
-    if (!coaUrl) {
+    if (target.closest('[data-close-modal]')) {
+      closeCoaPreview();
       return;
     }
 
-    event.preventDefault();
-
-    try {
-      const response = await fetch(coaUrl, { method: 'HEAD' });
-      if (response.ok) {
-        window.location.href = coaUrl;
-        return;
-      }
-    } catch (_) {
-      // Continue to fallback when file availability cannot be confirmed.
+    if (coaModal && target === coaModal) {
+      closeCoaPreview();
     }
+  });
 
-    window.location.href = fallback;
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeCoaPreview();
+    }
   });
 
   window.addEventListener('pointermove', updatePointerGlow);

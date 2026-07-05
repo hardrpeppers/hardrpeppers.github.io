@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HardRPeppers | Products</title>
-  <link rel="stylesheet" href="assets/css/style.css?v=2">
+  <link rel="stylesheet" href="assets/css/style.css?v=3">
 </head>
 <body>
   <div class="background-glow" aria-hidden="true"></div>
@@ -22,35 +22,36 @@
       <a href="products.html" class="is-active">Products</a>
       <a href="coas.html">COAs</a>
       <a href="index.html#about">About</a>
-      <a href="index.html#contact">Contact</a>
+      <a href="contact.html">Contact</a>
     </div>
   </nav>
 
   <main class="page-shell">
-    <section class="page-hero reveal">
-      <p class="eyebrow">Premium research catalog</p>
-      <h1>Products</h1>
-      <p class="page-hero__text">
-        Professional research materials presented with clear documentation, premium packaging, and streamlined laboratory workflows.
-      </p>
-    </section>
+    <section class="coas-panel reveal">
+      <div>
+        <p class="eyebrow">Premium research catalog</p>
+        <h1>Products</h1>
+        <p class="page-hero__text">
+          Professional research materials presented with clear documentation, premium packaging, and streamlined laboratory workflows.
+        </p>
+        <div class="coas-panel__actions">
+          <a href="contact.html" class="button button--primary button--xl">Text to Order</a>
+          <a href="coas.html" class="button button--secondary">View COAs</a>
+        </div>
+      </div>
 
-    <section class="catalog-controls reveal" aria-label="Catalog controls">
-      <label class="catalog-search" for="product-search">
-        <span>Search Products</span>
-        <input id="product-search" type="search" placeholder="Search by name or keyword" autocomplete="off">
-      </label>
-      <div class="catalog-filters" role="group" aria-label="Product categories">
-        <button type="button" class="catalog-filter is-active" data-filter="all">All</button>
-        <button type="button" class="catalog-filter" data-filter="research-materials">Research Materials</button>
-        <button type="button" class="catalog-filter" data-filter="support-products">Support Products</button>
-        <button type="button" class="catalog-filter" data-filter="starter-kits">Starter Kits</button>
+      <div class="coas-preview">
+        <article class="coas-preview__card">
+          <span>Mobile Ready</span>
+          <strong>Reusable cards and quick ordering</strong>
+          <p>Browse products on phones, tablets, and desktop with a layout that keeps images, pricing, and actions readable.</p>
+        </article>
       </div>
     </section>
 
     <section class="product-catalog product-catalog--store reveal" id="product-catalog" aria-label="Products catalog"></section>
   </main>
 
-  <script src="assets/js/script.js?v=2"></script>
+  <script src="assets/js/script.js?v=3"></script>
 </body>
 </html>
