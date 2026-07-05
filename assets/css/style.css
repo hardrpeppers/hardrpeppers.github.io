@@ -4537,8 +4537,16 @@ h1 {
 }
 
 .copy-order-button {
-  flex: 1 1 100%;
-  width: 100%;
+  background: linear-gradient(135deg, rgba(30, 107, 255, 0.24), rgba(30, 107, 255, 0.12));
+  border-color: rgba(30, 107, 255, 0.5);
+  color: #dce8ff;
+}
+
+.copy-order-button::before {
+  content: "\1F4CB";
+  margin-right: 0.45rem;
+  font-size: 0.9em;
+  line-height: 1;
 }
 
 .copy-order-toast {
@@ -4562,5 +4570,19 @@ h1 {
 .copy-order-toast.is-visible {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .copy-order-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(30, 107, 255, 0.24);
+    border-color: rgba(30, 107, 255, 0.62);
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .copy-order-button:active {
+    transform: scale(0.98);
+  }
 }
 

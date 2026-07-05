@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
     toast.className = 'copy-order-toast';
     toast.setAttribute('role', 'status');
     toast.setAttribute('aria-live', 'polite');
-    toast.textContent = 'Order details copied!';
+    toast.textContent = '\u2713 Order details copied!';
     document.body.appendChild(toast);
     return toast;
   };
@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     copyToastTimer = window.setTimeout(() => {
       toast.classList.remove('is-visible');
-    }, 1800);
+    }, 2400);
   };
 
   const resolveOrderDetails = (link) => {
@@ -287,11 +287,15 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!copyButton) {
         copyButton = document.createElement('button');
         copyButton.type = 'button';
-        copyButton.className = 'button product-card__button copy-order-button';
         copyButton.textContent = 'Copy Order Details';
         copyButton.dataset.orderFor = link.id;
         link.insertAdjacentElement('afterend', copyButton);
       }
+
+      const mirroredButtonClasses = Array.from(link.classList)
+        .filter((className) => className !== 'js-text-order' && className !== 'text-order-link')
+        .join(' ');
+      copyButton.className = `${mirroredButtonClasses} copy-order-button`;
 
       copyButton.dataset.orderMessage = orderMessage;
       copyButton.setAttribute('aria-label', 'Copy Order Details');
