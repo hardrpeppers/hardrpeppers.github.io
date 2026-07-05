@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HardRPeppers | Certificates of Analysis</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="background-glow" aria-hidden="true"></div>
+
+  <nav class="site-nav" aria-label="Primary navigation">
+    <a class="site-nav__brand" href="index.html">HardRPeppers</a>
+    <button class="site-nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav-links">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="site-nav__links" id="primary-nav-links">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#research">Research</a>
+      <a href="index.html#products">Products</a>
+      <a href="coas.html" class="is-active">COAs</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </nav>
+
+  <main class="page-shell">
+    <section class="page-hero reveal">
+      <p class="eyebrow">Laboratory database</p>
+      <h1>Certificates of Analysis</h1>
+      <p class="page-hero__text">
+        Search verified batch documentation with complete laboratory transparency and institutional-grade clarity.
+      </p>
+
+      <div class="coa-search-card">
+        <div class="coa-search-grid">
+          <label class="search-field">
+            <span>Product</span>
+            <input id="filter-product" type="text" placeholder="Search product name">
+          </label>
+          <label class="search-field">
+            <span>Batch Number</span>
+            <input id="filter-batch" type="text" placeholder="e.g. B1042">
+          </label>
+          <label class="search-field">
+            <span>Date</span>
+            <input id="filter-date" type="text" placeholder="YYYY-MM-DD">
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <section class="coa-table-card reveal">
+      <div class="table-wrap">
+        <table class="coa-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Batch</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>PDF</th>
+            </tr>
+          </thead>
+          <tbody id="coa-table-body">
+            <tr data-product="research compound a" data-batch="b1042" data-date="2026-06-10">
+              <td>Research Compound A</td>
+              <td>B1042</td>
+              <td>2026-06-10</td>
+              <td><span class="status-badge status-badge--verified">Verified</span></td>
+              <td><button class="table-action" data-open-pdf data-pdf="assets/pdfs/coa-sample.pdf" data-title="Research Compound A — Batch B1042">View PDF</button></td>
+            </tr>
+            <tr data-product="research compound b" data-batch="b1048" data-date="2026-05-22">
+              <td>Research Compound B</td>
+              <td>B1048</td>
+              <td>2026-05-22</td>
+              <td><span class="status-badge status-badge--verified">Verified</span></td>
+              <td><button class="table-action" data-open-pdf data-pdf="assets/pdfs/coa-sample.pdf" data-title="Research Compound B — Batch B1048">View PDF</button></td>
+            </tr>
+            <tr data-product="research compound c" data-batch="b1061" data-date="2026-04-17">
+              <td>Research Compound C</td>
+              <td>B1061</td>
+              <td>2026-04-17</td>
+              <td><span class="status-badge status-badge--verified">Verified</span></td>
+              <td><button class="table-action" data-open-pdf data-pdf="assets/pdfs/coa-sample.pdf" data-title="Research Compound C — Batch B1061">View PDF</button></td>
+            </tr>
+            <tr data-product="reference standard" data-batch="b1084" data-date="2026-03-11">
+              <td>Reference Standard</td>
+              <td>B1084</td>
+              <td>2026-03-11</td>
+              <td><span class="status-badge status-badge--verified">Verified</span></td>
+              <td><button class="table-action" data-open-pdf data-pdf="assets/pdfs/coa-sample.pdf" data-title="Reference Standard — Batch B1084">View PDF</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="pdf-modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal__header">
+        <div>
+          <p class="section-label">COA Preview</p>
+          <h3 id="modal-title">Certificate</h3>
+        </div>
+        <button class="modal__close" type="button" data-close-modal aria-label="Close modal">×</button>
+      </div>
+      <div class="modal__body">
+        <iframe id="modal-frame" title="Certificate of Analysis preview"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/script.js"></script>
+  <script>
+    const filterProduct = document.getElementById('filter-product');
+    const filterBatch = document.getElementById('filter-batch');
+    const filterDate = document.getElementById('filter-date');
+    const rows = Array.from(document.querySelectorAll('#coa-table-body tr'));
+    const modal = document.getElementById('pdf-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalFrame = document.getElementById('modal-frame');
+
+    const updateRows = () => {
+      const productValue = filterProduct.value.trim().toLowerCase();
+      const batchValue = filterBatch.value.trim().toLowerCase();
+      const dateValue = filterDate.value.trim().toLowerCase();
+
+      rows.forEach((row) => {
+        const productMatch = row.dataset.product.includes(productValue);
+        const batchMatch = row.dataset.batch.includes(batchValue);
+        const dateMatch = row.dataset.date.includes(dateValue);
+        const shouldShow = (!productValue || productMatch) && (!batchValue || batchMatch) && (!dateValue || dateMatch);
+        row.style.display = shouldShow ? '' : 'none';
+      });
+    };
+
+    [filterProduct, filterBatch, filterDate].forEach((input) => {
+      input.addEventListener('input', updateRows);
+    });
+
+    const closeModal = () => {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      modalFrame.src = '';
+    };
+
+    document.querySelectorAll('[data-open-pdf]').forEach((button) => {
+      button.addEventListener('click', () => {
+        modalTitle.textContent = button.dataset.title;
+        modalFrame.src = button.dataset.pdf;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    document.querySelectorAll('[data-close-modal]').forEach((element) => {
+      element.addEventListener('click', closeModal);
+    });
+
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>

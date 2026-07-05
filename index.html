@@ -1,247 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>HardRPeppers</title>
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-background:#0d0d0d;
-color:white;
-font-family:Arial,Helvetica,sans-serif;
-line-height:1.6;
-}
-
-header{
-background:linear-gradient(90deg,#0f0f0f,#1b1b1b);
-padding:70px 20px;
-text-align:center;
-border-bottom:4px solid #79ff38;
-}
-
-.logo{
-max-width:220px;
-margin-bottom:25px;
-border-radius:20px;
-}
-
-h1{
-font-size:48px;
-color:#79ff38;
-margin-bottom:10px;
-}
-
-.subtitle{
-font-size:20px;
-color:#d0d0d0;
-margin-bottom:25px;
-}
-
-.button{
-display:inline-block;
-padding:14px 32px;
-background:#79ff38;
-color:#111;
-font-weight:bold;
-text-decoration:none;
-border-radius:40px;
-transition:.3s;
-}
-
-.button:hover{
-background:white;
-}
-
-section{
-max-width:1100px;
-margin:auto;
-padding:70px 20px;
-}
-
-h2{
-color:#79ff38;
-margin-bottom:20px;
-font-size:32px;
-}
-
-.card{
-background:#171717;
-padding:30px;
-margin:25px 0;
-border-radius:18px;
-border:1px solid #2d2d2d;
-}
-
-footer{
-background:#111;
-padding:40px;
-text-align:center;
-border-top:3px solid #79ff38;
-margin-top:50px;
-}
-
-.small{
-font-size:14px;
-color:#bbb;
-}
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HardRPeppers</title>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
 <body>
+  <div class="background-glow" aria-hidden="true"></div>
 
-<header>
+  <section class="entry-gate" id="entry-gate" aria-labelledby="entry-gate-title">
+    <div class="entry-gate__backdrop" aria-hidden="true"></div>
+    <div class="entry-gate__card" role="dialog" aria-modal="true" aria-describedby="entry-gate-description">
+      <img src="assets/images/0F5CA4CC-1D91-4969-94A7-D25F084F75B5.png" class="entry-gate__logo" alt="HardRPeppers logo">
+      <h1 class="entry-gate__title" id="entry-gate-title">Research. Transparency.</h1>
+      <p class="entry-gate__welcome">Welcome to HardRPeppers.</p>
+      <p class="entry-gate__description" id="entry-gate-description">This website contains research materials and supporting documentation intended for laboratory and analytical research purposes.</p>
 
-<img src="0F5CA4CC-1D91-4969-94A7-D25F084F75B5.png" class="logo" alt="HardRPeppers Logo">
+      <form class="entry-gate__form" id="entry-gate-form">
+        <div class="entry-gate__checks">
+          <label class="entry-gate__check" for="gate-check-1">
+            <input type="checkbox" id="gate-check-1" class="entry-gate__checkbox" required>
+            <span>I am at least 21 years of age.</span>
+          </label>
+          <label class="entry-gate__check" for="gate-check-2">
+            <input type="checkbox" id="gate-check-2" class="entry-gate__checkbox" required>
+            <span>I understand these materials are intended for laboratory and analytical research purposes only.</span>
+          </label>
+          <label class="entry-gate__check" for="gate-check-3">
+            <input type="checkbox" id="gate-check-3" class="entry-gate__checkbox" required>
+            <span>I understand these products are not intended for human consumption.</span>
+          </label>
+          <label class="entry-gate__check" for="gate-check-4">
+            <input type="checkbox" id="gate-check-4" class="entry-gate__checkbox" required>
+            <span>I understand it is my responsibility to comply with all applicable laws and regulations in my jurisdiction.</span>
+          </label>
+        </div>
 
-<h1>HardRPeppers</h1>
+        <div class="entry-gate__actions">
+          <button type="submit" class="button button--primary entry-gate__enter" id="entry-gate-enter" disabled>Enter Research Portal</button>
+          <a href="https://www.google.com" class="button button--secondary entry-gate__leave">Leave Website</a>
+        </div>
+      </form>
+    </div>
+  </section>
 
-<p class="subtitle">
-Research Information • Quality Documentation • Transparency
-</p>
+  <div class="site-shell" id="site-shell">
 
-<a href="#about" class="button">
-Learn More
-</a>
+  <nav class="site-nav" aria-label="Primary navigation">
+    <a class="site-nav__brand" href="#home">HardRPeppers</a>
+    <button class="site-nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav-links">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="site-nav__links" id="primary-nav-links">
+      <a href="#home">Home</a>
+      <a href="#research">Research</a>
+      <a href="#products">Products</a>
+      <a href="#coas">COAs</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
 
-</header>
+  <main class="home-page">
+    <header id="home" class="hero reveal">
+      <div class="hero__content home-hero__panel">
+        <div class="home-hero__content-wrap">
+          <div class="home-hero__copy">
+            <p class="hero__badge">Documented • COA Available</p>
+            <h1>Research. Transparency.</h1>
+            <p class="subtitle">
+              Professional research materials with complete documentation and batch transparency.
+            </p>
 
-<section id="about">
+            <div class="hero__actions">
+              <a href="products.html" class="button button--primary">Browse Products</a>
+              <a href="coas.html" class="button button--secondary">View COAs</a>
+            </div>
+          </div>
+          <div class="home-hero__visual" aria-hidden="true">
+            <img src="assets/images/IMG_3127.jpeg" class="home-hero__image" alt="HardRPeppers Starter Kit">
+          </div>
+        </div>
+      </div>
+    </header>
 
-<h2>About HardRPeppers</h2>
+    <section id="products" class="home-section reveal" aria-label="Featured research materials">
+      <div class="home-section__heading">
+        <p class="section-label">Featured Research Materials</p>
+        <h2>Premium materials built around documentation, clarity, and trust.</h2>
+      </div>
 
-Research Information • Quality Documentation • Transparency
+      <div class="home-product-grid">
+        <article class="product-card home-product-card">
+          <div class="product-card__image">
+            <span class="product-card__ribbon">COA Available</span>
+            <img src="assets/images/IMG_3099.JPG" alt="Research Materials" loading="lazy">
+          </div>
+          <div class="product-card__body">
+            <h3>Research Materials</h3>
+            <p>Professionally packaged research materials with supporting documentation and transparent product context.</p>
+            <div class="product-card__badges">
+              <span class="badge">Purity</span>
+              <span class="badge">Documentation</span>
+            </div>
+            <a href="coas.html" class="product-card__button">View COA</a>
+          </div>
+        </article>
 
-<p>
+        <article class="product-card home-product-card">
+          <div class="product-card__image">
+            <span class="product-card__ribbon">Research Accessory</span>
+            <img src="assets/images/IMG_3127.jpeg" alt="Complete Starter Kit" loading="lazy">
+          </div>
+          <div class="product-card__body">
+            <h3>Complete Starter Kit</h3>
+            <p>A complete starter package with professional presentation and a streamlined setup experience for research workflows.</p>
+            <div class="product-card__badges">
+              <span class="badge">Starter Kit</span>
+              <span class="badge">Setup</span>
+            </div>
+            <a href="coas.html" class="product-card__button">Learn More</a>
+          </div>
+        </article>
 
-HardRPeppers is dedicated to providing clear product documentation,
-quality information, and research resources.
+        <article class="product-card home-product-card">
+          <div class="product-card__image">
+            <span class="product-card__ribbon">Laboratory Supplies</span>
+            <img src="assets/images/IMG_3107.jpeg" alt="Laboratory Supplies" loading="lazy">
+          </div>
+          <div class="product-card__body">
+            <h3>Laboratory Supplies</h3>
+            <p>Practical laboratory items and presentation materials designed for everyday research use.</p>
+            <div class="product-card__badges">
+              <span class="badge">Lab Use</span>
+              <span class="badge">Support</span>
+            </div>
+            <a href="coas.html" class="product-card__button">Learn More</a>
+          </div>
+        </article>
+      </div>
+    </section>
 
-This website is intended as an informational resource describing
-quality standards, laboratory documentation, and company information.
+    <section id="research" class="home-section reveal" aria-label="Why HardRPeppers">
+      <div class="home-section__heading">
+        <p class="section-label">Why HardRPeppers?</p>
+        <h2>Documentation-first presentation for professionals who expect clarity.</h2>
+      </div>
 
-</p>
+      <div class="home-feature-grid">
+        <article class="home-feature-card">
+          <div class="home-feature-card__icon">✦</div>
+          <h3>Verified Documentation</h3>
+          <p>Every research material includes supporting documentation for transparency.</p>
+        </article>
+        <article class="home-feature-card">
+          <div class="home-feature-card__icon">⟡</div>
+          <h3>Research Focused</h3>
+          <p>Professionally presented materials intended for laboratory and analytical research.</p>
+        </article>
+        <article class="home-feature-card">
+          <div class="home-feature-card__icon">◌</div>
+          <h3>Fast Shipping</h3>
+          <p>Orders are professionally packaged and shipped promptly.</p>
+        </article>
+      </div>
+    </section>
 
-</div>
-<div class="card">
-<h3>🧪 Laboratory Documentation</h3>
-<p>Access supporting laboratory documentation and reference materials.</p>
-</div>
+    <section id="coas" class="home-section home-section--cta reveal" aria-label="COA library">
+      <div class="home-coa-panel">
+        <div>
+          <p class="section-label">COA Library</p>
+          <h2>Every batch is backed by documentation and transparency.</h2>
+          <p>Review certificates of analysis, quality records, and supporting context in a polished experience designed for professionals.</p>
+        </div>
+        <a href="coas.html" class="button button--primary">Browse COAs</a>
+      </div>
+    </section>
 
-<div class="card">
-<h3>📄 Quality Standards</h3>
-<p>Learn more about our quality standards and documentation practices.</p>
-</div>
+    <section id="about" class="home-section home-section--about reveal" aria-label="About HardRPeppers">
+      <div class="home-about-panel">
+        <p class="section-label">About</p>
+        <h2>Premium research documentation, elevated.</h2>
+        <p>HardRPeppers combines modern presentation with rigorous quality standards so every interaction feels confident, credible, and refined.</p>
+      </div>
+    </section>
+  </main>
 
-<div class="card">
-<h3>📚 COA Library</h3>
-<p>Browse Certificates of Analysis and supporting documentation.</p>
-</div>
+  <footer id="contact" class="footer reveal">
+    <div class="footer__panel">
+      <div class="footer__brand">
+        <img src="assets/images/0F5CA4CC-1D91-4969-94A7-D25F084F75B5.png" class="footer__logo" alt="HardRPeppers logo">
+        <div>
+          <p class="footer__eyebrow">Research. Transparency.</p>
+          <p>Questions? Contact us for documentation, product details, or support.</p>
+        </div>
+      </div>
 
-<div class="card">
-<h3>📞 Contact</h3>
-<p>Need additional information? Contact us for documentation inquiries.</p>
-</div>
-</section><section>
+      <div class="footer__links">
+        <a href="#research">Research</a>
+        <a href="#products">Products</a>
+        <a href="#coas">COAs</a>
+        <a href="#contact">Contact</a>
+      </div>
 
-<h2>Quality & Documentation</h2>
+      <div class="footer__socials" aria-label="Social media links">
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.5" cy="6.5" r="1"></circle></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M8 10v6"></path><path d="M8 8.1v.1"></path><path d="M12 16v-3.4c0-1.3.9-2.3 2.2-2.3 1.3 0 2.3 1 2.3 2.3V16"></path><path d="M12 10v0"></path></svg>
+        </a>
+        <a href="#" aria-label="X">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg>
+        </a>
+      </div>
+    </div>
 
-<div class="card">
+    <div class="footer__bottom">
+      <p>Built with pride.</p>
+      <a href="#home" class="back-to-top">Back to top</a>
+    </div>
+  </footer>
 
-<h3>Quality Standards</h3>
-
-<p>
-Every batch is accompanied by supporting documentation where applicable.
-Our goal is to provide transparent information regarding identity,
-purity, and laboratory quality standards.
-</p>
-
-<br>
-
-<h3>Certificate of Analysis (COA)</h3>
-
-<p>
-COA documentation is available for applicable products.
-</p>
-
-<br>
-
-<p>
-Replace the placeholder below with your COA image after uploading it
-to this repository.
-</p>
-
-<br>
-
-<img src="coa.jpg"
-style="max-width:100%;border-radius:12px;border:1px solid #333;"
-alt="Certificate of Analysis">
-
-</div>
-
-</section>
-
-<section>
-
-<h2>Contact</h2>
-
-<div class="card">
-
-<p>
-
-Questions regarding documentation or research information can be sent to:
-
-</p>
-
-<br>
-
-<h3 style="color:#79ff38;">
-hardrpeppers@gmail.com
-</h3>
-
-</div>
-
-</section>
-
-<footer>
-
-<h2>Research Use Notice</h2>
-
-<p class="small">
-
-The information presented on this website is intended for educational
-and laboratory research purposes only.
-
-</p>
-
-<br>
-
-<p class="small">
-
-Products referenced by this website are not intended for human or
-veterinary use. Users are responsible for ensuring compliance with all
-applicable laws and regulations.
-
-</p>
-
-<br>
-
-<p class="small">
-
-© 2026 HardRPeppers. All Rights Reserved.
-
-</p>
-
-</footer>
-
+  </div>
+  <script src="assets/js/script.js"></script>
 </body>
 </html>

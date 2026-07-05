@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HardRPeppers | Products</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="background-glow" aria-hidden="true"></div>
+
+  <nav class="site-nav" aria-label="Primary navigation">
+    <a class="site-nav__brand" href="index.html">HardRPeppers</a>
+    <button class="site-nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav-links">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="site-nav__links" id="primary-nav-links">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#research">Research</a>
+      <a href="products.html" class="is-active">Products</a>
+      <a href="coas.html">COAs</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </nav>
+
+  <main class="page-shell">
+    <section class="page-hero reveal">
+      <p class="eyebrow">Premium research catalog</p>
+      <h1>Products</h1>
+      <p class="page-hero__text">
+        Professional research materials presented with clear documentation, premium packaging, and streamlined laboratory workflows.
+      </p>
+    </section>
+
+    <section class="catalog-controls reveal" aria-label="Catalog controls">
+      <label class="catalog-search" for="product-search">
+        <span>Search Products</span>
+        <input id="product-search" type="search" placeholder="Search by name or keyword" autocomplete="off">
+      </label>
+      <div class="catalog-filters" role="group" aria-label="Product categories">
+        <button type="button" class="catalog-filter is-active" data-filter="all">All</button>
+        <button type="button" class="catalog-filter" data-filter="research-materials">Research Materials</button>
+        <button type="button" class="catalog-filter" data-filter="support-products">Support Products</button>
+        <button type="button" class="catalog-filter" data-filter="starter-kits">Starter Kits</button>
+      </div>
+    </section>
+
+    <section class="product-catalog product-catalog--store reveal" id="product-catalog" aria-label="Products catalog"></section>
+  </main>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
