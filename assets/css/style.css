@@ -4536,3 +4536,31 @@ h1 {
   line-height: 1;
 }
 
+.copy-order-button {
+  flex: 1 1 100%;
+  width: 100%;
+}
+
+.copy-order-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 1.2rem;
+  transform: translateX(-50%) translateY(12px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1000000;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(30, 107, 255, 0.4);
+  background: rgba(8, 12, 18, 0.94);
+  color: #dce8ff;
+  font-size: 0.85rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28), 0 0 20px rgba(30, 107, 255, 0.2);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.copy-order-toast.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+

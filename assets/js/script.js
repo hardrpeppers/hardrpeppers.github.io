@@ -193,6 +193,53 @@ document.addEventListener('DOMContentLoaded', () => {
     return `sms:+${ORDER_PHONE}?&body=${encodedMessage}`;
   };
 
+  const copyTextToClipboard = async (text) => {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return;
+    }
+
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.setAttribute('readonly', '');
+    textArea.style.position = 'absolute';
+    textArea.style.left = '-9999px';
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+  };
+
+  const getCopyToast = () => {
+    let toast = document.getElementById('copy-order-toast');
+    if (toast) {
+      return toast;
+    }
+
+    toast = document.createElement('div');
+    toast.id = 'copy-order-toast';
+    toast.className = 'copy-order-toast';
+    toast.setAttribute('role', 'status');
+    toast.setAttribute('aria-live', 'polite');
+    toast.textContent = 'Order details copied!';
+    document.body.appendChild(toast);
+    return toast;
+  };
+
+  let copyToastTimer = null;
+  const showCopyToast = () => {
+    const toast = getCopyToast();
+    toast.classList.add('is-visible');
+
+    if (copyToastTimer) {
+      window.clearTimeout(copyToastTimer);
+    }
+
+    copyToastTimer = window.setTimeout(() => {
+      toast.classList.remove('is-visible');
+    }, 1800);
+  };
+
   const resolveOrderDetails = (link) => {
     let productName = (link.dataset.orderProduct || '').trim();
     let productPrice = normalizePrice(link.dataset.orderPrice || '');
@@ -213,16 +260,41 @@ document.addEventListener('DOMContentLoaded', () => {
   const wireTextOrderLinks = () => {
     const orderLinks = Array.from(document.querySelectorAll('a')).filter((link) => link.textContent && link.textContent.trim() === 'Text to Order');
 
-    orderLinks.forEach((link) => {
+    orderLinks.forEach((link, index) => {
       const { productName, productPrice } = resolveOrderDetails(link);
+      const orderMessage = buildOrderMessage(productName, productPrice);
+
+      if (!link.id) {
+        link.id = `text-order-link-${index}`;
+      }
+
       link.classList.add('js-text-order', 'text-order-link');
       link.setAttribute('href', buildSmsHref(productName, productPrice));
+      link.dataset.orderMessage = orderMessage;
 
       if (productName && productPrice) {
         link.setAttribute('aria-label', `Text to order ${productName} (${productPrice})`);
       } else {
         link.setAttribute('aria-label', 'Text to Order');
       }
+
+      const buttonContainer = link.parentElement;
+      if (!buttonContainer) {
+        return;
+      }
+
+      let copyButton = buttonContainer.querySelector(`.copy-order-button[data-order-for="${link.id}"]`);
+      if (!copyButton) {
+        copyButton = document.createElement('button');
+        copyButton.type = 'button';
+        copyButton.className = 'button product-card__button copy-order-button';
+        copyButton.textContent = 'Copy Order Details';
+        copyButton.dataset.orderFor = link.id;
+        link.insertAdjacentElement('afterend', copyButton);
+      }
+
+      copyButton.dataset.orderMessage = orderMessage;
+      copyButton.setAttribute('aria-label', 'Copy Order Details');
     });
   };
 
@@ -556,6 +628,22 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('click', (event) => {
     const target = event.target;
     if (!(target instanceof Element)) {
+      return;
+    }
+
+    const copyTrigger = target.closest('.copy-order-button');
+    if (copyTrigger instanceof HTMLButtonElement) {
+      event.preventDefault();
+      const message = copyTrigger.dataset.orderMessage || '';
+      if (message) {
+        copyTextToClipboard(message)
+          .catch(() => {
+            // No-op to avoid interrupting browsing if clipboard is blocked.
+          })
+          .finally(() => {
+            showCopyToast();
+          });
+      }
       return;
     }
 
