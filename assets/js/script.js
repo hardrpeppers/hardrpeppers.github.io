@@ -180,6 +180,8 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'assets/images/reta1.PNG',
       description: 'Single vial presentation with premium black cap styling and laboratory documentation support.',
       detailsUrl: 'product-a.html',
+      coaUrl: 'coas.html',
+      orderUrl: 'contact.html',
       featured: true,
     },
     {
@@ -189,6 +191,8 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'assets/images/reta3.PNG',
       description: 'Three-vial Reta pack configured for extended research workflows and consistent batch presentation.',
       detailsUrl: 'product-b.html',
+      coaUrl: 'coas.html',
+      orderUrl: 'contact.html',
     },
     {
       name: 'Antifreeze Single',
@@ -197,6 +201,8 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'assets/images/Anti1.PNG',
       description: 'Single antifreeze vial with premium blue cap styling and clean technical presentation.',
       detailsUrl: 'product-c.html',
+      coaUrl: 'coas.html',
+      orderUrl: 'contact.html',
     },
     {
       name: 'Starter Kit',
@@ -205,6 +211,8 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'assets/images/Kit.PNG',
       description: 'Starter package with Reta, Antifreeze, and core support supplies for structured lab setup.',
       detailsUrl: 'product-e.html',
+      coaUrl: 'coas.html',
+      orderUrl: 'contact.html',
     },
   ];
 
@@ -312,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="product-card__image product-card__image--catalog">
           ${product.featured ? '<span class="product-card__featured">Featured Product</span>' : ''}
           <span class="product-card__ribbon">COA Available</span>
-          <img src="${product.image}" alt="${product.name} product image" loading="lazy" decoding="async">
+          <img src="${product.image}" alt="${product.name} product image" width="1200" height="900" loading="lazy" decoding="async">
         </div>
         <div class="product-card__body">
           <h3>${product.name}</h3>
@@ -320,6 +328,8 @@ document.addEventListener('DOMContentLoaded', () => {
           <p class="product-card__price">${product.price}</p>
           <div class="product-card__actions">
             <a href="${product.detailsUrl}" class="button button--primary product-card__button">View Details</a>
+            <a href="${product.orderUrl}" class="button product-card__button product-card__button--order">Text to Order</a>
+            <a href="${product.coaUrl}" class="button product-card__button product-card__button--coa">View COA</a>
           </div>
         </div>
       `;
