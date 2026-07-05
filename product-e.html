@@ -3,14 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HardRPeppers | Documentation Kit</title>
-  <link rel="stylesheet" href="assets/css/style.css?v=3">
+  <title>HardRPeppers | Products</title>
+  <link rel="stylesheet" href="assets/css/style.css?v=7">
 </head>
 <body>
   <div class="background-glow" aria-hidden="true"></div>
 
   <nav class="site-nav" aria-label="Primary navigation">
-    <a class="site-nav__brand" href="index.html">HardRPeppers</a>
+    <a class="site-nav__brand" href="index.html" aria-label="HardRPeppers home">
+      <img src="assets/images/logo2.PNG" class="site-nav__brand-logo" alt="HardRPeppers logo">
+    </a>
     <button class="site-nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav-links">
       <span></span>
       <span></span>
@@ -26,47 +28,32 @@
     </div>
   </nav>
 
-  <main class="page-shell product-detail-shell">
-    <section class="product-detail reveal">
-      <div class="product-detail__media">
-        <div class="product-detail__image">
-          <img src="assets/images/IMG_3109.JPG" alt="" loading="lazy">
+  <main class="page-shell">
+    <section class="coas-panel reveal">
+      <div>
+        <p class="eyebrow">Premium research catalog</p>
+        <h1>Products</h1>
+        <p class="page-hero__text">
+          Professional research materials presented with clear documentation, premium packaging, and streamlined laboratory workflows.
+        </p>
+        <div class="coas-panel__actions">
+          <a href="contact.html" class="button button--primary button--xl">Text to Order</a>
+          <a href="coas.html" class="button button--secondary">View COAs</a>
         </div>
       </div>
-      <div class="product-detail__content">
-        <p class="eyebrow">Featured Product</p>
-        <h1>Documentation Kit</h1>
-        <p class="page-hero__text">Professional research kit with supporting technical reference and traceability assets for comprehensive review.</p>
 
-        <div class="product-detail__panel">
-          <h3>Product Overview</h3>
-          <p>Designed for documentation-first workflows, this package combines research context with polished supporting resources.</p>
-        </div>
-
-        <div class="product-detail__panel">
-          <h3>Research Information</h3>
-          <p>Included content helps streamline review, classification, and technical understanding for research teams.</p>
-        </div>
-
-        <div class="product-detail__panel">
-          <h3>Documentation</h3>
-          <p>Structured assets and certificate support make it easier to work from a complete and transparent information set.</p>
-        </div>
-
-        <div class="product-detail__panel">
-          <h3>Batch Information</h3>
-          <p>Batch ID: B1102 • Release: 2026-02-14 • Status: Verified</p>
-        </div>
-
-        <div class="product-detail__actions">
-          <a href="coas.html" class="button button--primary">Certificate of Analysis</a>
-          <a href="contact.html" class="button button--secondary button--xl">Text to Order</a>
-          <a href="products.html" class="button button--secondary">Back to Products</a>
-        </div>
+      <div class="coas-preview">
+        <article class="coas-preview__card">
+          <span>Mobile Ready</span>
+          <strong>Reusable cards and quick ordering</strong>
+          <p>Browse products on phones, tablets, and desktop with a layout that keeps images, pricing, and actions readable.</p>
+        </article>
       </div>
     </section>
+
+    <section class="product-catalog product-catalog--store reveal" id="product-catalog" aria-label="Products catalog"></section>
   </main>
 
-  <script src="assets/js/script.js?v=3"></script>
+  <script src="assets/js/script.js?v=7"></script>
 </body>
 </html>

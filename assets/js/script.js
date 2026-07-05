@@ -78,53 +78,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const products = [
     {
-      name: 'Research Compound A',
+      name: 'Reta Single',
       price: '$38.00',
       category: 'Research Materials',
-      image: 'assets/images/hero-products.jpg',
-      description: 'Structured reference material with robust documentation for professional review and batch transparency.',
+      image: 'assets/images/reta1.PNG',
+      description: 'Single vial presentation with premium black cap styling and laboratory documentation support.',
       detailsUrl: 'product-a.html',
       featured: true,
     },
     {
-      name: 'Research Compound B',
-      price: '$42.00',
+      name: 'Reta 3 Pack',
+      price: '$105.00',
       category: 'Research Materials',
-      image: 'assets/images/IMG_3098.JPG',
-      description: 'Premium documentation package created for technical review, reference workflows, and academic transparency.',
+      image: 'assets/images/reta3.PNG',
+      description: 'Three-vial Reta pack configured for extended research workflows and consistent batch presentation.',
       detailsUrl: 'product-b.html',
     },
     {
-      name: 'Research Compound C',
-      price: '$46.00',
+      name: 'Antifreeze Single',
+      price: '$16.00',
       category: 'Research Materials',
-      image: 'assets/images/IMG_3099.JPG',
-      description: 'Professionally presented research material designed for confidence, review, and batch-specific support.',
+      image: 'assets/images/Anti1.PNG',
+      description: 'Single antifreeze vial with premium blue cap styling and clean technical presentation.',
       detailsUrl: 'product-c.html',
     },
     {
-      name: 'Reference Standard',
-      price: '$34.00',
-      category: 'Support Products',
-      image: 'assets/images/IMG_3108.JPG',
-      description: 'Reference-grade material created for controlled validation workflows and technical comparison.',
-      detailsUrl: 'product-d.html',
-    },
-    {
-      name: 'Documentation Kit',
-      price: '$28.00',
-      category: 'Support Products',
-      image: 'assets/images/IMG_3109.JPG',
-      description: 'Professional research kit with supporting technical reference and traceability assets for comprehensive review.',
-      detailsUrl: 'product-e.html',
-    },
-    {
-      name: 'Quality Panel',
-      price: '$30.00',
+      name: 'Starter Kit',
+      price: '$65.00',
       category: 'Starter Kits',
-      image: 'assets/images/IMG_3127.jpeg',
-      description: 'Comprehensive quality presentation package designed for lab teams and documentation review scenarios.',
-      detailsUrl: 'product-f.html',
+      image: 'assets/images/Kit.PNG',
+      description: 'Starter package with Reta, Antifreeze, and core support supplies for structured lab setup.',
+      detailsUrl: 'product-e.html',
     },
   ];
 
@@ -181,21 +165,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const footer = document.createElement('footer');
-    footer.classList.add('footer', 'site-footer', 'reveal');
+    footer.classList.add('footer', 'site-footer', 'premium-footer', 'reveal');
     document.body.appendChild(footer);
 
     const currentYear = new Date().getFullYear();
     footer.innerHTML = `
-      <div class="footer__panel">
-        <div class="footer__brand">
-          <img src="assets/images/0F5CA4CC-1D91-4969-94A7-D25F084F75B5.png" class="footer__logo" alt="HardRPeppers logo">
+      <div class="footer__panel premium-footer__panel">
+        <div class="footer__brand premium-footer__brand">
+          <img src="assets/images/logo2.PNG" class="footer__logo" alt="HardRPeppers logo">
           <div>
             <p class="footer__eyebrow">HardRPeppers</p>
-            <p class="footer__disclaimer">Research Use Only. For laboratory and analytical research purposes only.</p>
+            <p class="premium-footer__summary">Dark, clean, premium presentation with documentation-first transparency.</p>
           </div>
         </div>
 
-        <div class="footer__links footer__links--compact" aria-label="Quick navigation">
+        <div class="premium-footer__features" aria-label="Store highlights">
+          <article><h3>Premium Quality</h3><p>Lab tested for purity and consistency.</p></article>
+          <article><h3>Up-To-Date COAs</h3><p>Current third-party lab reports.</p></article>
+          <article><h3>Discreet Shipping</h3><p>Secure packaging.</p></article>
+          <article><h3>Fast Processing</h3><p>Orders ship quickly.</p></article>
+        </div>
+
+        <div class="footer__links premium-footer__links" aria-label="Quick navigation">
           <a href="index.html#home">Home</a>
           <a href="products.html">Products</a>
           <a href="coas.html">COAs</a>
@@ -203,10 +194,11 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       </div>
 
-      <div class="footer__bottom">
-        <p>© ${currentYear} HardRPeppers. All rights reserved.</p>
+      <div class="footer__bottom premium-footer__bottom">
+        <p>These products are intended for research purposes only. Not for human consumption. You must be 21 years of age or older to purchase.</p>
         <a href="contact.html" class="back-to-top">Text to Order</a>
       </div>
+      <div class="footer__bottom footer__bottom--legal"><p>© ${currentYear} HardRPeppers. All rights reserved.</p></div>
     `;
   };
 

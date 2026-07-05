@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2200 620" role="img" aria-labelledby="title desc">
+  <title id="title">HardRPeppers Official Website Logo</title>
+  <desc id="desc">Horizontal HardRPeppers wordmark with aggressive motorsports styling and a large blue pepper on transparent background.</desc>
+
+  <defs>
+    <linearGradient id="pepperBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#96c0ff"/>
+      <stop offset="45%" stop-color="#1e6bff"/>
+      <stop offset="100%" stop-color="#0f3f9e"/>
+    </linearGradient>
+
+    <linearGradient id="blueEdge" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7fb1ff"/>
+      <stop offset="60%" stop-color="#1e6bff"/>
+      <stop offset="100%" stop-color="#4f8fff"/>
+    </linearGradient>
+
+    <filter id="logoFx" x="-10%" y="-20%" width="120%" height="160%">
+      <feDropShadow dx="0" dy="0" stdDeviation="7" flood-color="#1e6bff" flood-opacity="0.52"/>
+      <feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#000000" flood-opacity="0.34"/>
+    </filter>
+
+    <clipPath id="slashClip">
+      <rect x="0" y="0" width="2200" height="620" rx="0" ry="0"/>
+    </clipPath>
+  </defs>
+
+  <g filter="url(#logoFx)">
+    <path d="M430 160 C392 86 310 82 252 126 C188 173 170 266 214 334 C245 382 302 418 374 414 C470 408 540 330 520 236 C513 204 474 167 430 160 Z"
+      fill="url(#pepperBlue)" stroke="#05070d" stroke-width="16"/>
+    <path d="M431 132 C450 81 500 58 544 73 C576 85 589 112 581 137 C573 163 547 168 526 157 C513 151 503 143 492 132 C474 113 450 117 431 132 Z"
+      fill="#ffffff" stroke="#05070d" stroke-width="13"/>
+    <path d="M257 290 C313 232 393 208 475 220"
+      fill="none" stroke="#ffffff" stroke-width="13" stroke-linecap="round" opacity="0.78"/>
+
+    <g clip-path="url(#slashClip)">
+      <path d="M604 430 L954 110" stroke="url(#blueEdge)" stroke-width="28" stroke-linecap="round" opacity="0.78"/>
+      <path d="M680 470 L1030 150" stroke="url(#blueEdge)" stroke-width="22" stroke-linecap="round" opacity="0.56"/>
+    </g>
+
+    <text x="560" y="308"
+      font-family="Impact, Haettenschweiler, 'Arial Black', sans-serif"
+      font-size="282"
+      font-style="italic"
+      font-weight="900"
+      letter-spacing="2"
+      fill="#ffffff"
+      stroke="#05070d"
+      stroke-width="16"
+      paint-order="stroke">
+      HARDR
+    </text>
+
+    <text x="1430" y="308"
+      font-family="Impact, Haettenschweiler, 'Arial Black', sans-serif"
+      font-size="282"
+      font-style="italic"
+      font-weight="900"
+      letter-spacing="1"
+      fill="url(#blueEdge)"
+      stroke="#05070d"
+      stroke-width="16"
+      paint-order="stroke">
+      R
+    </text>
+
+    <text x="830" y="520"
+      font-family="Impact, Haettenschweiler, 'Arial Black', sans-serif"
+      font-size="208"
+      font-style="italic"
+      font-weight="900"
+      letter-spacing="2"
+      fill="url(#pepperBlue)"
+      stroke="#05070d"
+      stroke-width="13"
+      paint-order="stroke">
+      peppers
+    </text>
+  </g>
+</svg>

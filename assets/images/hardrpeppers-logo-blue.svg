@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 320" role="img" aria-labelledby="title desc">
+  <title id="title">HardRPeppers Logo</title>
+  <desc id="desc">HardRPeppers wordmark in electric blue and white on transparent background.</desc>
+  <defs>
+    <linearGradient id="blueFill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7fb1ff"/>
+      <stop offset="48%" stop-color="#1e6bff"/>
+      <stop offset="100%" stop-color="#4f8fff"/>
+    </linearGradient>
+    <filter id="logoGlow" x="-20%" y="-35%" width="140%" height="180%">
+      <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#1e6bff" flood-opacity="0.55"/>
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#logoGlow)">
+    <text x="16" y="148" font-family="Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif" font-size="164" font-weight="900" letter-spacing="1" fill="#ffffff" stroke="#05070d" stroke-width="8" paint-order="stroke">
+      HARDR
+    </text>
+    <text x="724" y="148" font-family="Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif" font-size="164" font-weight="900" letter-spacing="1" fill="url(#blueFill)" stroke="#05070d" stroke-width="8" paint-order="stroke">
+      R
+    </text>
+    <text x="208" y="282" font-family="Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif" font-size="142" font-style="italic" font-weight="900" letter-spacing="1" fill="url(#blueFill)" stroke="#05070d" stroke-width="7" paint-order="stroke">
+      peppers
+    </text>
+  </g>
+</svg>
