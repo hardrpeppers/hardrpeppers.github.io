@@ -4523,3 +4523,16 @@ h1 {
   }
 }
 
+.text-order-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+.text-order-link::before {
+  content: "\260E";
+  font-size: 0.9em;
+  line-height: 1;
+}
+

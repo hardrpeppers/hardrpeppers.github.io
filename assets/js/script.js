@@ -171,6 +171,60 @@ document.addEventListener('DOMContentLoaded', () => {
   const coaModalTitle = document.getElementById('modal-title');
   const coaModalFrame = document.getElementById('modal-frame');
   const siteFooter = document.querySelector('footer.footer');
+  const ORDER_PHONE = '16982013793';
+
+  const normalizePrice = (value) => {
+    const text = String(value || '').trim();
+    if (!text) {
+      return '';
+    }
+    return text.replace(/\.00$/, '');
+  };
+
+  const buildOrderMessage = (productName, productPrice) => {
+    if (productName && productPrice) {
+      return `Hi! I'd like to order:\n• ${productName} (${productPrice})\n\nName:\nShipping State:`;
+    }
+    return `Hi! I'd like to place an order.\n\nName:\nShipping State:`;
+  };
+
+  const buildSmsHref = (productName, productPrice) => {
+    const encodedMessage = encodeURIComponent(buildOrderMessage(productName, productPrice));
+    return `sms:+${ORDER_PHONE}?&body=${encodedMessage}`;
+  };
+
+  const resolveOrderDetails = (link) => {
+    let productName = (link.dataset.orderProduct || '').trim();
+    let productPrice = normalizePrice(link.dataset.orderPrice || '');
+
+    if (!(productName && productPrice)) {
+      const card = link.closest('.product-card');
+      if (card) {
+        const nameEl = card.querySelector('h3');
+        const priceEl = card.querySelector('.product-card__price, .premium-product-card__price');
+        productName = (nameEl ? nameEl.textContent : '').trim();
+        productPrice = normalizePrice((priceEl ? priceEl.textContent : '').trim());
+      }
+    }
+
+    return { productName, productPrice };
+  };
+
+  const wireTextOrderLinks = () => {
+    const orderLinks = Array.from(document.querySelectorAll('a')).filter((link) => link.textContent && link.textContent.trim() === 'Text to Order');
+
+    orderLinks.forEach((link) => {
+      const { productName, productPrice } = resolveOrderDetails(link);
+      link.classList.add('js-text-order', 'text-order-link');
+      link.setAttribute('href', buildSmsHref(productName, productPrice));
+
+      if (productName && productPrice) {
+        link.setAttribute('aria-label', `Text to order ${productName} (${productPrice})`);
+      } else {
+        link.setAttribute('aria-label', 'Text to Order');
+      }
+    });
+  };
 
   const products = [
     {
@@ -409,6 +463,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', updateNavShrinkState, { passive: true });
 
   renderFooter();
+  wireTextOrderLinks();
 
   const updatePointerGlow = (event) => {
     if (!hero || !glow) {
@@ -496,6 +551,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderProductCatalog();
   renderCoaCards();
+  wireTextOrderLinks();
 
   document.addEventListener('click', (event) => {
     const target = event.target;
