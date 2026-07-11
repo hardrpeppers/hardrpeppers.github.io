@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HardRPeppers | Products</title>
-  <link rel="stylesheet" href="assets/css/style.css?v=16">
+  <title>CN Supply Co. | Contact</title>
+  <link rel="icon" type="image/png" href="images/logos/favicon.png">
+  <link rel="stylesheet" href="assets/css/style.css?v=17">
   <script>
     (function () {
-      var key = 'hrp-entry-gate-v2';
+      var key = 'cn-entry-gate-v1';
       var shouldGate = true;
       try {
         var raw = localStorage.getItem(key);
@@ -27,12 +28,12 @@
     })();
   </script>
 </head>
-<body>
+<body class="cn-brand">
   <div class="background-glow" aria-hidden="true"></div>
 
   <nav class="site-nav" aria-label="Primary navigation">
-    <a class="site-nav__brand" href="index.html" aria-label="HardRPeppers home">
-      <img src="assets/images/logo2.PNG" class="site-nav__brand-logo" alt="HardRPeppers logo">
+    <a class="site-nav__brand" href="index.html" aria-label="CN Supply Co. home">
+      <img src="images/logos/Transparent CN Supply Co. logo (PNG).png" class="site-nav__brand-logo" alt="CN Supply Co. logo">
     </a>
     <button class="site-nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav-links">
       <span></span>
@@ -41,41 +42,58 @@
     </button>
     <div class="site-nav__links" id="primary-nav-links">
       <a href="index.html#home">Home</a>
-      <a href="index.html#research">Research</a>
-      <a href="products.html" class="is-active">Products</a>
-      <a href="coas.html">COAs</a>
-      <a href="index.html#about">About</a>
-      <a href="faq.html">FAQ</a>
-      <a href="contact.html">Contact</a>
+      <a href="products.html#research-supplies">Research Supplies</a>
+      <a href="products.html#lab-supplies">Lab Supplies</a>
+      <a href="products.html#storage-organization">Storage &amp; Organization</a>
+      <a href="products.html#merchandise">Merchandise</a>
+      <a href="coas.html">Certificates of Analysis</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="is-active">Contact</a>
     </div>
   </nav>
 
   <main class="page-shell">
-    <section class="coas-panel reveal">
+    <section class="coas-panel reveal cn-texture-section cn-texture-45">
       <div>
-        <p class="eyebrow">Premium research catalog</p>
-        <h1>Products</h1>
+        <p class="eyebrow">CN Supply Co.</p>
+        <h1>Contact</h1>
         <p class="page-hero__text">
-          Professional research materials presented with clear documentation, premium packaging, and streamlined laboratory workflows.
+          Reach out for product support, documentation requests, and ordering assistance.
         </p>
         <div class="coas-panel__actions">
           <a href="contact.html" class="button button--primary button--xl">Text to Order</a>
-          <a href="coas.html" class="button button--secondary">View COAs</a>
+          <a href="coas.html" class="button button--secondary">Certificates of Analysis</a>
         </div>
       </div>
 
       <div class="coas-preview">
         <article class="coas-preview__card">
-          <span>Mobile Ready</span>
-          <strong>Reusable cards and quick ordering</strong>
-          <p>Browse products on phones, tablets, and desktop with a layout that keeps images, pricing, and actions readable.</p>
+          <span>Text to Order</span>
+          <strong>(698) 201-3793</strong>
+          <p>Send your requested products, name, and shipping state for quick order confirmation.</p>
         </article>
       </div>
     </section>
 
-    <section class="product-catalog product-catalog--store reveal" id="product-catalog" aria-label="Products catalog"></section>
+    <section class="card reveal cn-texture-section cn-texture-46" aria-label="Contact form">
+      <form class="contact-form-grid">
+        <label for="contact-name">Name</label>
+        <input id="contact-name" name="name" type="text" placeholder="Your name" required>
+
+        <label for="contact-phone">Phone</label>
+        <input id="contact-phone" name="phone" type="tel" placeholder="(000) 000-0000" required>
+
+        <label for="contact-email">Email</label>
+        <input id="contact-email" name="email" type="email" placeholder="you@example.com">
+
+        <label for="contact-message">Message</label>
+        <textarea id="contact-message" name="message" rows="5" placeholder="How can we help?"></textarea>
+
+        <button type="submit" class="button button--primary">Send Message</button>
+      </form>
+    </section>
   </main>
 
-  <script src="assets/js/script.js?v=16"></script>
+  <script src="assets/js/script.js?v=17"></script>
 </body>
 </html>

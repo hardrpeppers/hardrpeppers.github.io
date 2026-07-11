@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   document.documentElement.classList.add('js-enabled');
 
-  const GATE_KEY = 'hrp-entry-gate-v2';
+  const GATE_KEY = 'cn-entry-gate-v1';
   const GATE_DURATION_MS = 24 * 60 * 60 * 1000;
   const siteShell = document.getElementById('site-shell');
 
@@ -32,9 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
     gateNode.innerHTML = `
       <div class="entry-gate__backdrop" aria-hidden="true"></div>
       <div class="entry-gate__card" role="dialog" aria-modal="true" aria-describedby="entry-gate-description">
-        <img src="assets/images/logo2.PNG" class="entry-gate__logo" alt="HardRPeppers logo">
-        <h1 class="entry-gate__title" id="entry-gate-title">Research. Transparency.</h1>
-        <p class="entry-gate__welcome">Welcome to HardRPeppers.</p>
+        <img src="images/logos/Transparent CN Supply Co. logo (PNG).png" class="entry-gate__logo" alt="CN Supply Co. logo">
+        <h1 class="entry-gate__title" id="entry-gate-title">CN Supply Co.</h1>
+        <p class="entry-gate__welcome">Research Supplies</p>
         <p class="entry-gate__description" id="entry-gate-description">This website contains research materials and supporting documentation intended for laboratory and analytical research purposes.</p>
         <form class="entry-gate__form" id="entry-gate-form">
           <div class="entry-gate__checks">
@@ -44,15 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </label>
             <label class="entry-gate__check" for="gate-check-2">
               <input type="checkbox" id="gate-check-2" class="entry-gate__checkbox" required>
-              <span>I understand these materials are intended for laboratory and analytical research purposes only.</span>
-            </label>
-            <label class="entry-gate__check" for="gate-check-3">
-              <input type="checkbox" id="gate-check-3" class="entry-gate__checkbox" required>
-              <span>I understand these products are not intended for human consumption.</span>
-            </label>
-            <label class="entry-gate__check" for="gate-check-4">
-              <input type="checkbox" id="gate-check-4" class="entry-gate__checkbox" required>
-              <span>I understand it is my responsibility to comply with all applicable laws and regulations in my jurisdiction.</span>
+              <span>I understand these materials are intended for laboratory and analytical research purposes only and are not for human consumption.</span>
             </label>
           </div>
           <div class="entry-gate__actions">
@@ -304,43 +296,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const products = [
     {
-      name: 'Reta Single',
+      name: 'Research Supplies Core Pack',
       price: '$38.00',
       category: 'Research Materials',
-      image: 'assets/images/reta1.PNG',
-      description: 'Single vial presentation with premium black cap styling and laboratory documentation support.',
-      detailsUrl: 'product-a.html',
+      image: 'images/categories/Research Supplies banner.png',
+      description: 'Primary research materials curated for repeatable laboratory processes and documentation support.',
+      detailsUrl: 'products.html#research-supplies',
       coaUrl: 'coas.html',
       orderUrl: 'contact.html',
       featured: true,
     },
     {
-      name: 'Reta 3 Pack',
+      name: 'Lab Supplies Kit',
       price: '$105.00',
-      category: 'Research Materials',
-      image: 'assets/images/reta3.PNG',
-      description: 'Three-vial Reta pack configured for extended research workflows and consistent batch presentation.',
-      detailsUrl: 'product-b.html',
+      category: 'Lab Supplies',
+      image: 'images/categories/Lab Supplies banner.png',
+      description: 'Precision lab support supplies that pair with controlled material workflows.',
+      detailsUrl: 'products.html#lab-supplies',
       coaUrl: 'coas.html',
       orderUrl: 'contact.html',
     },
     {
-      name: 'Antifreeze Single',
+      name: 'Storage and Organization Set',
       price: '$16.00',
-      category: 'Research Materials',
-      image: 'assets/images/Anti1.PNG',
-      description: 'Single antifreeze vial with premium blue cap styling and clean technical presentation.',
-      detailsUrl: 'product-c.html',
+      category: 'Storage and Organization',
+      image: 'images/categories/Storage & Organization banner.png',
+      description: 'A compact organization bundle for safer handling and cleaner bench setups.',
+      detailsUrl: 'products.html#storage-organization',
       coaUrl: 'coas.html',
       orderUrl: 'contact.html',
     },
     {
-      name: 'Starter Kit',
+      name: 'CN Merchandise Capsule',
       price: '$65.00',
-      category: 'Starter Kits',
-      image: 'assets/images/Kit.PNG',
-      description: 'Starter package with Reta, Antifreeze, and core support supplies for structured lab setup.',
-      detailsUrl: 'product-e.html',
+      category: 'Merchandise',
+      image: 'images/categories/Merchandise banner.png',
+      description: 'Premium CN Supply Co. merchandise designed for a clean industrial research identity.',
+      detailsUrl: 'products.html#merchandise',
       coaUrl: 'coas.html',
       orderUrl: 'contact.html',
     },
@@ -406,34 +398,37 @@ document.addEventListener('DOMContentLoaded', () => {
     footer.innerHTML = `
       <div class="footer__panel premium-footer__panel">
         <div class="footer__brand premium-footer__brand">
-          <img src="assets/images/logo2.PNG" class="footer__logo" alt="HardRPeppers logo">
+          <img src="images/logos/Transparent CN Supply Co. logo (PNG).png" class="footer__logo" alt="CN Supply Co. logo">
           <div>
-            <p class="footer__eyebrow">HardRPeppers</p>
-            <p class="premium-footer__summary">Dark, clean, premium presentation with documentation-first transparency.</p>
+            <p class="footer__eyebrow">CN Supply Co.</p>
+            <p class="premium-footer__summary">Research Supplies</p>
           </div>
         </div>
 
         <div class="premium-footer__features" aria-label="Store highlights">
-          <article><h3>Premium Quality</h3><p>Lab tested for purity and consistency.</p></article>
-          <article><h3>Up-To-Date COAs</h3><p>Current third-party lab reports.</p></article>
-          <article><h3>Discreet Shipping</h3><p>Secure packaging.</p></article>
-          <article><h3>Fast Processing</h3><p>Orders ship quickly.</p></article>
+          <article><h3>Research Supplies</h3><p>Professional materials and lab support.</p></article>
+          <article><h3>For Research Use Only</h3><p>Laboratory and analytical research only.</p></article>
+          <article><h3>Not For Human Consumption</h3><p>Products are not for human consumption.</p></article>
+          <article><h3>Copyright</h3><p>Copyright CN Supply Co.</p></article>
         </div>
 
         <div class="footer__links premium-footer__links" aria-label="Quick navigation">
           <a href="index.html#home">Home</a>
-          <a href="products.html">Products</a>
-          <a href="coas.html">COAs</a>
-          <a href="faq.html">FAQ</a>
+          <a href="index.html#research-supplies">Research Supplies</a>
+          <a href="index.html#lab-supplies">Lab Supplies</a>
+          <a href="index.html#storage-organization">Storage and Organization</a>
+          <a href="index.html#merchandise">Merchandise</a>
+          <a href="coas.html">Certificates of Analysis</a>
+          <a href="about.html">About</a>
           <a href="contact.html">Contact</a>
         </div>
       </div>
 
       <div class="footer__bottom premium-footer__bottom">
-        <p>These products are intended for research purposes only. Not for human consumption. You must be 21 years of age or older to purchase.</p>
+        <p>Research Supplies. For Research Use Only. Not For Human Consumption.</p>
         <a href="contact.html" class="back-to-top">Text to Order</a>
       </div>
-      <div class="footer__bottom footer__bottom--legal"><p>© ${currentYear} HardRPeppers. All rights reserved.</p></div>
+      <div class="footer__bottom footer__bottom--legal"><p>© ${currentYear} CN Supply Co. All rights reserved.</p></div>
     `;
   };
 

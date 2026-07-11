@@ -4021,7 +4021,7 @@ h1 {
   }
 }
 
-/* HardRPeppers official brand lock: electric blue, white, black only */
+/* CN Supply Co. official brand lock: electric blue, white, black only */
 :root {
   --accent: #1e6bff;
   --border: rgba(30, 107, 255, 0.2);
@@ -4597,6 +4597,125 @@ h1 {
   margin-right: 0.45rem;
   font-size: 0.9em;
   line-height: 1;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap');
+
+:root {
+  --bg: #050505;
+  --text: #ffffff;
+  --muted: #b8b8b8;
+  --accent: #009dff;
+  --panel: rgba(30, 30, 30, 0.78);
+  --accent-2: #66c5ff;
+  --border: rgba(0, 157, 255, 0.3);
+}
+
+body.cn-brand,
+.cn-brand {
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 12% 8%, rgba(0, 157, 255, 0.18), transparent 20%),
+    radial-gradient(circle at 88% 10%, rgba(0, 157, 255, 0.12), transparent 24%),
+    linear-gradient(145deg, #050505 0%, #0a0a0a 100%);
+}
+
+.cn-brand h1,
+.cn-brand h2,
+.cn-brand h3,
+.cn-brand .premium-hero__title {
+  font-family: 'Sora', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.cn-texture-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.cn-texture-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+}
+
+.cn-texture-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+.cn-texture-40::before { background-image: url('../../images/backgrounds/11A – Dark brushed metal.png'); }
+.cn-texture-41::before { background-image: url('../../images/backgrounds/11B – Black hexagon texture.png'); }
+.cn-texture-42::before { background-image: url('../../images/backgrounds/11C – Blue smokefog.png'); }
+.cn-texture-43::before { background-image: url('../../images/backgrounds/11D – Carbon fiber.png'); }
+.cn-texture-44::before { background-image: url('../../images/backgrounds/11E – Dark concreteslate.png'); }
+.cn-texture-45::before { background-image: url('../../images/backgrounds/11G – Blue gradient with subtle light rays.png'); }
+.cn-texture-46::before { background-image: url('../../images/backgrounds/11H – Clean black studio background.png'); }
+.cn-texture-47::before { background-image: url('../../images/backgrounds/blue molecule-pattern.png'); }
+
+.cn-brand .site-nav,
+.cn-brand .coas-panel,
+.cn-brand .coas-preview__card,
+.cn-brand .product-card,
+.cn-brand .premium-footer__panel,
+.cn-brand .entry-gate__card,
+.cn-brand .card {
+  background: linear-gradient(145deg, rgba(30, 30, 30, 0.75), rgba(8, 8, 8, 0.78));
+  border-color: var(--border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45), 0 0 36px rgba(0, 157, 255, 0.15);
+}
+
+.cn-brand .button--primary,
+.cn-brand .product-card__button--order,
+.cn-brand .premium-cart-button {
+  background: linear-gradient(135deg, #009dff, #2cb2ff);
+  border-color: rgba(0, 157, 255, 0.7);
+  color: #ffffff;
+}
+
+.cn-brand .button--secondary,
+.cn-brand .product-card__button,
+.cn-brand .site-nav__links a {
+  border-color: rgba(0, 157, 255, 0.38);
+}
+
+.cn-brand .footer__eyebrow,
+.cn-brand .section-label,
+.cn-brand .eyebrow {
+  color: #9ddcff;
+  border-color: rgba(0, 157, 255, 0.32);
+  background: rgba(0, 157, 255, 0.12);
+}
+
+.contact-form-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.contact-form-grid label {
+  color: #d8ecf9;
+  font-weight: 600;
+}
+
+.contact-form-grid input,
+.contact-form-grid textarea {
+  width: 100%;
+  padding: 0.78rem 0.92rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 157, 255, 0.32);
+  background: rgba(8, 11, 16, 0.74);
+  color: #ffffff;
+}
+
+.contact-form-grid textarea {
+  resize: vertical;
 }
 
 .copy-order-toast {

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2200 620" role="img" aria-labelledby="title desc">
-  <title id="title">HardRPeppers Official Website Logo</title>
-  <desc id="desc">Horizontal HardRPeppers wordmark with aggressive motorsports styling and a large blue pepper on transparent background.</desc>
+  <title id="title">CN Supply Co. Official Website Logo</title>
+  <desc id="desc">Horizontal CN Supply Co. wordmark in electric blue and white on transparent background.</desc>
 
   <defs>
     <linearGradient id="pepperBlue" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -48,7 +48,7 @@
       stroke="#05070d"
       stroke-width="16"
       paint-order="stroke">
-      HARDR
+      CN
     </text>
 
     <text x="1430" y="308"
@@ -74,7 +74,7 @@
       stroke="#05070d"
       stroke-width="13"
       paint-order="stroke">
-      peppers
+      SUPPLY CO.
     </text>
   </g>
 </svg>

@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HardRPeppers | Products</title>
-  <link rel="stylesheet" href="assets/css/style.css?v=16">
+  <title>CN Supply Co. | Research Supplies</title>
+  <link rel="icon" type="image/png" href="images/logos/favicon.png">
+  <link rel="stylesheet" href="assets/css/style.css?v=17">
   <script>
     (function () {
-      var key = 'hrp-entry-gate-v2';
+      var key = 'cn-entry-gate-v1';
       var shouldGate = true;
       try {
         var raw = localStorage.getItem(key);
@@ -27,12 +28,12 @@
     })();
   </script>
 </head>
-<body>
+<body class="cn-brand">
   <div class="background-glow" aria-hidden="true"></div>
 
   <nav class="site-nav" aria-label="Primary navigation">
-    <a class="site-nav__brand" href="index.html" aria-label="HardRPeppers home">
-      <img src="assets/images/logo2.PNG" class="site-nav__brand-logo" alt="HardRPeppers logo">
+    <a class="site-nav__brand" href="index.html" aria-label="CN Supply Co. home">
+      <img src="images/logos/Transparent CN Supply Co. logo (PNG).png" class="site-nav__brand-logo" alt="CN Supply Co. logo">
     </a>
     <button class="site-nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav-links">
       <span></span>
@@ -41,41 +42,78 @@
     </button>
     <div class="site-nav__links" id="primary-nav-links">
       <a href="index.html#home">Home</a>
-      <a href="index.html#research">Research</a>
-      <a href="products.html" class="is-active">Products</a>
-      <a href="coas.html">COAs</a>
-      <a href="index.html#about">About</a>
-      <a href="faq.html">FAQ</a>
+      <a href="products.html#research-supplies" class="is-active">Research Supplies</a>
+      <a href="products.html#lab-supplies">Lab Supplies</a>
+      <a href="products.html#storage-organization">Storage &amp; Organization</a>
+      <a href="products.html#merchandise">Merchandise</a>
+      <a href="coas.html">Certificates of Analysis</a>
+      <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </div>
   </nav>
 
   <main class="page-shell">
-    <section class="coas-panel reveal">
+    <section class="coas-panel reveal cn-texture-section cn-texture-41">
       <div>
-        <p class="eyebrow">Premium research catalog</p>
-        <h1>Products</h1>
+        <p class="eyebrow">CN Supply Co.</p>
+        <h1>Research Supplies</h1>
         <p class="page-hero__text">
-          Professional research materials presented with clear documentation, premium packaging, and streamlined laboratory workflows.
+          Explore our complete catalog of research supplies, lab supplies, storage and organization products, and branded merchandise.
         </p>
         <div class="coas-panel__actions">
           <a href="contact.html" class="button button--primary button--xl">Text to Order</a>
-          <a href="coas.html" class="button button--secondary">View COAs</a>
+          <a href="coas.html" class="button button--secondary">Certificates of Analysis</a>
         </div>
       </div>
 
       <div class="coas-preview">
         <article class="coas-preview__card">
-          <span>Mobile Ready</span>
-          <strong>Reusable cards and quick ordering</strong>
-          <p>Browse products on phones, tablets, and desktop with a layout that keeps images, pricing, and actions readable.</p>
+          <span>Industrial + Minimal</span>
+          <strong>Premium laboratory storefront</strong>
+          <p>Built for clear product browsing and efficient ordering across desktop, tablet, and mobile.</p>
         </article>
       </div>
+    </section>
+
+    <section class="coas-panel reveal cn-texture-section cn-texture-42" id="research-supplies">
+      <div>
+        <p class="eyebrow">Category</p>
+        <h2>Research Supplies</h2>
+        <p class="page-hero__text">Core research materials with documentation support available upon request.</p>
+      </div>
+      <div class="coas-preview"><article class="coas-preview__card"><img src="images/categories/Research Supplies banner.png" alt="Research supplies"></article></div>
+    </section>
+
+    <section class="coas-panel reveal cn-texture-section cn-texture-43" id="lab-supplies">
+      <div>
+        <p class="eyebrow">Category</p>
+        <h2>Lab Supplies</h2>
+        <p class="page-hero__text">Practical lab support products selected for reliability and workflow consistency.</p>
+      </div>
+      <div class="coas-preview"><article class="coas-preview__card"><img src="images/categories/Lab Supplies banner.png" alt="Lab supplies"></article></div>
+    </section>
+
+    <section class="coas-panel reveal cn-texture-section cn-texture-44" id="storage-organization">
+      <div>
+        <p class="eyebrow">Category</p>
+        <h2>Storage &amp; Organization</h2>
+        <p class="page-hero__text">Storage systems and organization tools to maintain clean, controlled research spaces.</p>
+      </div>
+      <div class="coas-preview"><article class="coas-preview__card"><img src="images/categories/Storage & Organization banner.png" alt="Storage products"></article></div>
+    </section>
+
+    <section class="coas-panel reveal cn-texture-section cn-texture-45" id="merchandise">
+      <div>
+        <p class="eyebrow">Category</p>
+        <h2>Merchandise</h2>
+        <p class="page-hero__text">CN Supply Co. merchandise designed with a modern industrial laboratory aesthetic.</p>
+      </div>
+      <div class="coas-preview"><article class="coas-preview__card"><img src="images/categories/Merchandise banner.png" alt="Merchandise"></article></div>
     </section>
 
     <section class="product-catalog product-catalog--store reveal" id="product-catalog" aria-label="Products catalog"></section>
   </main>
 
-  <script src="assets/js/script.js?v=16"></script>
+  <script src="assets/js/script.js?v=17"></script>
 </body>
 </html>
